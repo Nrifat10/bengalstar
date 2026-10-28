@@ -3,8 +3,18 @@
 A modern, fully responsive, **pure static** website (no build step, no frameworks, no npm)
 for **Bangla Star Co., Ltd** — manpower supply for petrol stations in Saudi Arabia.
 
+**Design:** Premium light theme — white / cool-light surfaces, ink-navy `#0E1F3D`,
+brand navy `#16305E` and gold `#D4A017` accents, soft shadows, rounded photo cards.
 **Stack:** Plain HTML + CSS + vanilla JavaScript · English / العربية (with full RTL) ·
-Deep blue `#0A2A5E` + gold `#D4A017` · Poppins (EN) + Cairo (AR)
+Sora + Inter (EN) + Tajawal (AR)
+
+**Sections:** Navbar (glass, desktop ≥ 960px) · Hero (light split layout + image-card
+slider with Saudi station photos + floating badges + mini stats) · Client marquee ·
+About (photo collage + years badge + checklist) · Services (6 cards with images &
+includes-lists) · Why Us (6 cards + 72-hour guarantee banner) · How It Works
+(4 steps with timeline) · Stats band (navy, animated counters) · Coverage (region
+chips) · Testimonials (slider) · FAQ (accordion) · CTA band · Contact (navy info
+card + form + map) · Footer · Floating WhatsApp + back-to-top.
 
 ---
 

@@ -6,51 +6,47 @@
      key  -> referenced from HTML via <img data-img="key">
      src  -> the image URL
 
-   Hero & about images use Unsplash with the recommended params
-   (?auto=format&fit=crop&w=1600&q=70). Service cards use a smaller width
-   (w=800) for faster loading.
-
-   NOTE: two hero images (petrol station at night, car wash) are hosted on a
-   fast external CDN and were chosen for exact subject relevance — you can
-   swap them for your own Unsplash URLs at any time by editing this file.
+   Hero + about images are real / concept petrol stations from Saudi Arabia
+   and the Gulf (Aldrees, WATAN, Petromin, Oxygen, Fuel Way), hosted on a fast
+   external CDN. Service-card images are subject-exact stock photos.
 
    If any image fails to load, js/main.js automatically swaps in
    FALLBACK_IMAGE (a branded placeholder), so the layout never breaks.
    ========================================================================== */
 
 const IMAGES = [
-  /* ----- Hero slides (5) ----- */
+  /* ----- Hero image-card slides (4) — Saudi stations ----- */
   {
     key: "hero-1",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a0ebd516ea97.jpeg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8e7d7915dbb5.jpg"
   },
   {
     key: "hero-2",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2e4310b76464.jpeg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f5e6ac590faf.jpg"
   },
   {
     key: "hero-3",
-    src: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1600&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dfd19ba8a000.jpg"
   },
   {
     key: "hero-4",
-    src: "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1600&q=70"
-  },
-  {
-    key: "hero-5",
-    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1600&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8337db80054a.jpeg"
   },
 
   /* ----- About ----- */
   {
-    key: "about",
-    src: "https://images.unsplash.com/photo-1600661653561-629509216228?auto=format&fit=crop&w=1600&q=70"
+    key: "about-main",
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0615e75eef73.jpg"
+  },
+  {
+    key: "about-team",
+    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=800&q=70"
   },
 
   /* ----- Service cards (6) ----- */
   {
     key: "service-fuel",
-    src: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f294b4dabd6e.jpg"
   },
   {
     key: "service-carwash",
@@ -58,7 +54,7 @@ const IMAGES = [
   },
   {
     key: "service-store",
-    src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a77fe7e567f9.jpeg"
   },
   {
     key: "service-cashier",
@@ -78,21 +74,21 @@ const IMAGES = [
 const IMAGE_MAP = {};
 IMAGES.forEach(function (img) { IMAGE_MAP[img.key] = img.src; });
 
-/* Branded placeholder shown whenever a remote image fails to load */
+/* Branded placeholder (light theme) shown whenever a remote image fails */
 const FALLBACK_SVG =
   '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">' +
   '  <defs>' +
   '    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">' +
-  '      <stop offset="0" stop-color="#123B77"/>' +
-  '      <stop offset="1" stop-color="#061B40"/>' +
+  '      <stop offset="0" stop-color="#F6F8FC"/>' +
+  '      <stop offset="1" stop-color="#E8EEF7"/>' +
   '    </linearGradient>' +
   '  </defs>' +
   '  <rect width="1600" height="900" fill="url(#bg)"/>' +
   '  <g>' +
   '    <path d="M800 300 L813 332.6 L848 333.4 L821 355.4 L830.5 389 L800 369.6 L769.5 389 L779 355.4 L752 333.4 L787 332.6 Z" fill="#D4A017"/>' +
   '  </g>' +
-  '  <text x="800" y="480" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#D4A017" text-anchor="middle">Bangla Star</text>' +
-  '  <text x="800" y="532" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#8FA6C9" text-anchor="middle">Manpower for Petrol Stations</text>' +
+  '  <text x="800" y="480" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#0E1F3D" text-anchor="middle">Bangla Star</text>' +
+  '  <text x="800" y="532" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#5C6A85" text-anchor="middle">Manpower for Petrol Stations</text>' +
   '</svg>';
 
 const FALLBACK_IMAGE =

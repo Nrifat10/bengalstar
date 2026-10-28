@@ -2,9 +2,9 @@
    Bangla Star Co., Ltd — Main script
    ----------------------------------------------------------------------------
    Handles: images + fallbacks, EN/AR i18n with RTL, sticky navbar, mobile
-   menu, hero & testimonial sliders (autoplay, arrows, dots, swipe, pause),
-   scroll-reveal, animated counters, scrollspy, back-to-top, worker-type
-   preselect, Formspree contact form with WhatsApp fallback.
+   menu, hero image-card & testimonial sliders (autoplay, dots, swipe, pause),
+   FAQ accordion, scroll-reveal, animated counters, scrollspy, back-to-top,
+   worker-type preselect, Formspree contact form with WhatsApp fallback.
    ========================================================================== */
 
 (function () {
@@ -208,7 +208,7 @@
     var toTop = $("#toTop");
     function onScroll() {
       var y = window.scrollY || window.pageYOffset;
-      if (navbar) { navbar.classList.toggle("scrolled", y > 40); }
+      if (navbar) { navbar.classList.toggle("scrolled", y > 24); }
       if (toTop) { toTop.classList.toggle("visible", y > 600); }
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -222,6 +222,11 @@
         });
       });
     }
+
+    /* Close the slide-in menu if the viewport grows to desktop width */
+    window.addEventListener("resize", function () {
+      if (menuOpen && window.innerWidth >= 960) { setMenu(false); }
+    });
   }
 
   /* Scrollspy — highlight the section link currently in view */
@@ -241,13 +246,13 @@
           l.classList.toggle("active", l.getAttribute("href") === id);
         });
       });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    }, { rootMargin: "-42% 0px -52% 0px", threshold: 0 });
 
     targets.forEach(function (s) { observer.observe(s); });
   }
 
   /* --------------------------------------------------------------------------
-     5. Fade slider (used by hero + testimonials)
+     5. Fade slider (hero image card + testimonials)
      Closure-based factory: no "this", fully encapsulated state.
      ------------------------------------------------------------------------ */
   function createSlider(root, opts) {
@@ -385,7 +390,24 @@
   }
 
   /* --------------------------------------------------------------------------
-     6. Scroll reveal
+     6. FAQ accordion — only one item open at a time
+     ------------------------------------------------------------------------ */
+  function initFaq() {
+    var items = $$(".faq-item");
+    if (items.length < 2) { return; }
+
+    items.forEach(function (item) {
+      item.addEventListener("toggle", function () {
+        if (!item.open) { return; }
+        items.forEach(function (other) {
+          if (other !== item && other.open) { other.open = false; }
+        });
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     7. Scroll reveal
      ------------------------------------------------------------------------ */
   function initReveal() {
     var els = $$(".reveal");
@@ -418,7 +440,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     7. Animated stat counters
+     8. Animated stat counters
      ------------------------------------------------------------------------ */
   function initCounters() {
     var counters = $$(".counter");
@@ -460,7 +482,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     8. Contact form — Formspree via fetch, WhatsApp fallback
+     9. Contact form — Formspree via fetch, WhatsApp fallback
      ------------------------------------------------------------------------ */
   function initContactForm() {
     var form = $("#contactForm");
@@ -505,6 +527,7 @@
         name: form.name.value.trim(),
         company: form.company.value.trim(),
         phone: form.phone.value.trim(),
+        city: form.city.value,
         workerType: form.workerType.value,
         message: form.message.value.trim(),
         _language: currentLang,
@@ -521,13 +544,6 @@
       /* Not configured yet → guide the visitor to WhatsApp */
       if (!endpoint) {
         showAlert("error", t("contact.form.notConfigured"));
-        var wa = $(".form-fallback a[data-whatsapp]");
-        if (wa) {
-          wa.classList.remove("attn");
-          /* restart CSS animation */
-          void wa.offsetWidth;
-          wa.classList.add("attn");
-        }
         return;
       }
 
@@ -562,7 +578,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     9. Service cards preselect the worker type in the form
+     10. Service cards / footer links preselect the worker type in the form
      ------------------------------------------------------------------------ */
   function initWorkerPreselect() {
     var select = $("#cf-type");
@@ -579,7 +595,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     10. Language toggle + footer year + boot
+     11. Language toggle + footer year + boot
      ------------------------------------------------------------------------ */
   function initLanguageToggle() {
     var toggle = $("#langToggle");
@@ -600,6 +616,7 @@
     initLanguageToggle();
     initNavbar();
     initScrollspy();
+    initFaq();
     initReveal();
     initCounters();
     initContactForm();
@@ -608,10 +625,8 @@
 
     /* Sliders */
     var hero = createSlider($("#heroSlider"), {
-      interval: 6000,
-      dotsWrap: $("#heroDots"),
-      prevBtn: $("#heroPrev"),
-      nextBtn: $("#heroNext")
+      interval: 5000,
+      dotsWrap: $("#heroDots")
     });
 
     var testi = createSlider($("#testimonialSlider"), {
