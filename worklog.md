@@ -93,3 +93,37 @@ Stage Summary:
 - EN↔AR toggle: round-trip clean. dir/lang/font swap correctly, all 6 service titles localize, all 6 images remain loaded (no fallback), RTL layout verified by VLM screenshot ("AR-RTL RENDER OK"). Toggled back to EN cleanly.
 - dev.log status: clean. No 404s, no errors, no exceptions. One informational Next.js "allowedDevOrigins" cross-origin warning (unrelated to images).
 - Files modified: NONE. /static-site/js/images.js and /public/js/images.js remain at their Task 2-v1 state.
+
+---
+Task ID: 6-v2
+Agent: general-purpose (agent-browser post-swap verification subagent)
+Task: Verify via agent-browser that the just-swapped fuel (da06f87be78b.jpeg) and carwash (a32d25dd6111.jpg) images render live with no watermarks, and the other 4 service cards still render correctly.
+
+Work Log:
+- Read /home/z/my-project/worklog.md for project context (latest sections: Task 2-v1 sourced all 6 service images via z-ai image-search with VLM=YES verdicts; Task 5-v1 visually verified all 6 render correctly and decided not to swap the portrait fuel image). The current task: confirm the Task 6-v1 watermark-fix swap (fuel e1e5f836f591.jpg → da06f87be78b.jpeg; carwash 4f02f12ec86e.jpg → a32d25dd6111.jpg) is live in the dev preview.
+- Confirmed dev server is up: `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/` → 200. No restart needed.
+- Verified the swap is on disk by grepping /static-site/js/images.js: `service-fuel` src = `https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da06f87be78b.jpeg`, `service-carwash` src = `https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a32d25dd6111.jpg`. The comment block at the top of the file documents the 2025-10-28 swap rationale (Alamy + DepositPhotos watermarks on the old URLs). The 4 other service keys (service-store, service-cashier, service-tire, service-team) retain their Task 2-v1 URLs.
+- Loaded the `agent-browser` skill (npm-installed at /usr/local/bin/agent-browser, version 0.39.4) and the `VLM` skill (`z-ai vision` CLI, model glm-5v-turbo) for visual watermark checks.
+- Opened http://localhost:3000/ in agent-browser (fresh browser context → no pre-existing cache to bypass); page title confirmed as "Bangla Star Co., Ltd | Manpower Supply for Petrol Stations in Saudi Arabia". Set viewport to 1440×900. Ran `agent-browser reload` + `wait --load networkidle` + 2s pause as the equivalent of a hard reload to ensure the latest /js/images.js is fetched.
+- Inspected the iframe's contentDocument (the root page wraps /index.html in a same-origin fullscreen iframe): queried `#services .service-card img` and confirmed the live DOM `src` attributes are the NEW URLs — fuel = `da06f87be78b.jpeg`, carwash = `a32d25dd6111.jpg`. The other 4 cards retained their previous URLs. (Initial state: fuel & carwash reported `complete:false, naturalW:0` because they use `loading="lazy"` and weren't yet in viewport; the other 4 were already `complete:true`.)
+- Scrolled `#services` into view inside the iframe, waited 3.5 s for lazy-load, then re-inspected. All 6 service-card `<img>`s now report `complete:true, naturalWidth>0, isFallback:false`:
+  * service-fuel       → da06f87be78b.jpeg, 1600×900, complete, not fallback. ✓ NEW URL live.
+  * service-carwash    → a32d25dd6111.jpg,  1504×627, complete, not fallback. ✓ NEW URL live.
+  * service-store      → 650986028231.jpg,  1200×800, complete, not fallback.
+  * service-cashier    → f8c9bd26d4db.webp, 1200×900, complete, not fallback.
+  * service-tire       → 753a24c834e4.png,  1586×892, complete, not fallback.
+  * service-team       → 21aac739a55a.png,  1536×1024, complete, not fallback.
+- Took 2 screenshots: services-grid-6v2.png (with section heading visible) and services-top-row-6v2.png (top row of 3 cards after scrolling fuel card to top). Cropped per-card images via Python PIL from the top-row screenshot using the live `<img>` bounding boxes (fuel: 145,0,515,230 → 370×230; carwash: 535,0,905,230 → 370×230) and saved as fuel-card-6v2.png and carwash-card-6v2.png.
+- VLM check (glm-5v-turbo) on fuel-card-6v2.png with the prompt "Is there a visible watermark, stock-photo logo, or preview text on this image? Describe what you see in one sentence." → Response: "No, there is no visible watermark, stock-photo logo, or preview text on the image, which shows a close-up of a hand holding a fuel pump nozzle inserted into a vehicle's fuel tank." Matches expected (gloved hand + Shell nozzle refueling a car); NO watermark.
+- VLM check (glm-5v-turbo) on carwash-card-6v2.png with the same prompt → Response: "No, the image shows a person in blue work clothes washing a silver Mercedes-Benz car covered in soap suds, with a navigation menu visible at the top." Matches expected (worker in blue coveralls pressure-washing a silver Mercedes); NO watermark. (The "navigation menu visible at the top" remark is a benign artifact — the screenshot crop included a sliver of the page navbar above the card; the image itself is watermark-free.)
+- Spot-checked the other 4 cards (store / cashier / tire / team): all 4 report `complete:true, naturalWidth>0, isFallback:false`. No broken or fallback-SVG swaps anywhere in the grid.
+- Checked /home/z/my-project/dev.log (last 50 lines): only `✓ Compiled in <n>ms` and `GET / 200 in <n>ms` lines. rg for `404|error|fail|exception|warn|EADDRINUSE|ERR_` returned zero matches. Note (same as Task 5-v1): the 6 image URLs are served from the external CDN `z-cdn.chatglm.cn` directly by the browser, so they never appear as request lines in the Next.js dev.log; their load status was verified instead via DOM inspection of `img.complete` + `img.naturalWidth` (all > 0).
+- Closed the agent-browser session.
+- Files touched this task: NONE. /static-site/js/images.js and /public/js/images.js remain at their Task 6-v1 state. (Screenshot artifacts written to /home/z/my-project/{services-grid-6v2.png, services-top-row-6v2.png, fuel-card-6v2.png, carwash-card-6v2.png} as evidence — not source files; safe to delete if disk is constrained.)
+
+Stage Summary:
+- Fuel Attendants card: src in live DOM = `https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da06f87be78b.jpeg` (the new watermark-free URL, NOT the old `e1e5f836f591.jpg`). `complete:true`, `naturalWidth:1600`, `naturalHeight:900`, NOT the branded fallback SVG. VLM verdict: NO watermark, NO stock-photo logo, NO preview text — "a close-up of a hand holding a fuel pump nozzle inserted into a vehicle's fuel tank." PASS.
+- Car Wash & Detailing card: src in live DOM = `https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a32d25dd6111.jpg` (the new watermark-free URL, NOT the old `4f02f12ec86e.jpg`). `complete:true`, `naturalWidth:1504`, `naturalHeight:627`, NOT the branded fallback SVG. VLM verdict: NO watermark, NO stock-photo logo, NO preview text — "a person in blue work clothes washing a silver Mercedes-Benz car covered in soap suds." PASS.
+- Other 4 service cards (Bakala & Store Staff / Cashiers / Tire & Oil Change / Supervisors & Cleaners): all 4 retain their Task 2-v1 URLs, all 4 report `complete:true, naturalWidth>0, isFallback:false`. No broken images, no fallback swaps. PASS.
+- dev.log status: clean. No 404s, no errors, no exceptions, no warnings. All routes return 200; only `✓ Compiled` and `GET / 200` lines present.
+- Overall: the Task 6-v1 swap is verified LIVE in the dev preview. Both new images render without watermarks, both match their service subjects, and the rest of the services grid is unaffected. No further action needed.

@@ -13,7 +13,16 @@
    to match each service (fuel attendant with nozzle-in-hand, worker in a
    car-wash bay, store clerk inside a minimart, cashier at a POS terminal,
    mechanic with an impact wrench on a wheel, forecourt supervisor).
-   All 6 service images return a YES verdict from glm-5v-turbo vision.
+   service-fuel was re-swapped in Task 6-v1 (2025-10-28) after the original
+   Alamy preview turned out to carry a visible stock-photo watermark; the
+   replacement is a watermark-free landscape photo of a gloved hand actively
+   refueling a car with a Shell nozzle. service-carwash was also re-swapped
+   in the same task for the same reason (DepositPhotos watermarks); replaced
+   with a watermark-free Kärcher photo of a worker pressure-washing a car.
+   The other 4 service images (store, cashier, tire, team) were VLM-spot-
+   checked for watermarks and confirmed clean. The team image carries a
+   small blog-title text overlay ("Gas Station Site Inspection Checklist")
+   but has a perfect subject match and no better replacement was found.
 
    If any image fails to load, js/main.js automatically swaps in
    FALLBACK_IMAGE (a branded placeholder), so the layout never breaks.
@@ -49,13 +58,23 @@ const IMAGES = [
   },
 
   /* ----- Service cards (6) ----- */
+  /* service-fuel: swapped 2025-10-28 — old Alamy preview (e1e5f836f591.jpg)
+     had a visible watermark; replaced with a watermark-free Carwow photo
+     (1600x900, gloved hand holding Shell nozzle actively refueling a car),
+     VLM-verified: no watermark + person visible + good Fuel Attendants match. */
   {
     key: "service-fuel",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e1e5f836f591.jpg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da06f87be78b.jpeg"
   },
+  /* service-carwash: swapped 2025-10-28 (Task 6-v1) — old DepositPhotos
+     preview (4f02f12ec86e.jpg) carried visible stock-photo watermarks;
+     replaced with a watermark-free Kärcher photo (1504x627, worker in
+     blue coveralls using a high-pressure washer to rinse soap suds off
+     a silver Mercedes in a professional car wash bay), VLM-verified:
+     no watermark + worker visible + good Car Wash & Detailing match. */
   {
     key: "service-carwash",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4f02f12ec86e.jpg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a32d25dd6111.jpg"
   },
   {
     key: "service-store",
