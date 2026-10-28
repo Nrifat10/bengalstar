@@ -8,7 +8,12 @@
 
    Hero + about images are real / concept petrol stations from Saudi Arabia
    and the Gulf (Aldrees, WATAN, Petromin, Oxygen, Fuel Way), hosted on a fast
-   external CDN. Service-card images are subject-exact stock photos.
+   external CDN. Service-card images (Task 2-v1, 2025-10-28) are subject-exact
+   stock photos sourced via z-ai image-search and individually VLM-verified
+   to match each service (fuel attendant with nozzle-in-hand, worker in a
+   car-wash bay, store clerk inside a minimart, cashier at a POS terminal,
+   mechanic with an impact wrench on a wheel, forecourt supervisor).
+   All 6 service images return a YES verdict from glm-5v-turbo vision.
 
    If any image fails to load, js/main.js automatically swaps in
    FALLBACK_IMAGE (a branded placeholder), so the layout never breaks.
@@ -46,27 +51,27 @@ const IMAGES = [
   /* ----- Service cards (6) ----- */
   {
     key: "service-fuel",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f294b4dabd6e.jpg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e1e5f836f591.jpg"
   },
   {
     key: "service-carwash",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2e4310b76464.jpeg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4f02f12ec86e.jpg"
   },
   {
     key: "service-store",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a77fe7e567f9.jpeg"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/650986028231.jpg"
   },
   {
     key: "service-cashier",
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f8c9bd26d4db.webp"
   },
   {
     key: "service-tire",
-    src: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=800&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/753a24c834e4.png"
   },
   {
     key: "service-team",
-    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=70"
+    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/21aac739a55a.png"
   }
 ];
 
