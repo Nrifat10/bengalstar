@@ -215,3 +215,23 @@ Stage Summary:
 - Reduced-motion users now see each logo exactly once (.dup display:none).
 - All HTTP checks 200; mirrors byte-identical. No collisions/duplicates with the existing 6 brands (Petrolat ≠ PETROLY verified via VLM).
 - Open follow-up (for a browser-verification task): confirm all 13 logos render undistorted at 76px tile height (4 uploads have solid backgrounds — Gulf/Petrolat/Benzene/SASREF — which sit in the white brand-tile cards; 3 are transparent PNGs), and that the slower 82s loop still animates smoothly on desktop + mobile + AR/RTL.
+
+## 9-v1 — Task 9: Fix hero text overlap (floating badge covering slide caption)
+
+Task: User reported "text overlap kotrteca" (text overlapping). Identify and fix.
+
+Work Log:
+- agent-browser full-page screenshot (desktop 1280) → VLM scan flagged the hero image card: the "100% Documented" floating badge was overlapping the rotating slide caption text ("...rocourts" = tail of "forecourts" being covered).
+- DOM geometry confirmed: caption pill (x732–947, y630–673) and .badge-verified (x690–877, y616–662) overlapped by ~145×32px. The badge-verified was positioned `bottom: 58px; inset-inline-start: -18px` (bottom-left, same corner as the .h-caption at `bottom: 18px; inset-inline-start: 18px`) → both claimed the bottom-left corner and collided.
+- Fix (css/style.css lines 710–718): moved .badge-verified from bottom-left to TOP-LEFT, mirroring .badge-support (which stays top-right). Desktop `bottom: 58px` → `top: 24px` (inset-inline-start unchanged at -18px); mobile `bottom: 46px` → `top: 12px` (inset-inline-start unchanged at 8px). Added explanatory comment. Now both floating badges sit at the top corners (diagonal pair), leaving the bottom of the hero frame clear for the caption pill + dots.
+- Mirrored style.css to public/ (diff MATCH).
+
+Verification (agent-browser, 3 viewports):
+- Desktop 1280: caption y630, badge-verified y159 (top-left), badge-support y159 (top-right). overlap_cap_verified=false, overlap_verified_support=false. VLM: "all badge and pill text fully readable, no overlap/clipping".
+- Mobile 390: caption y1019, verified y817 (top-left x28–199), support y817 (top-right x235–362). 36px gap between badges. capV=false, vS=false.
+- Arabic RTL: dir=rtl. Badges mirrored correctly — verified "موثّقون 100%" top-right (x235), support "دعم 24/7" top-left (x28). Caption "تغطية الطرق السريعة والمدن" at bottom. capV=false, vS=false. VLM: "Arabic glyphs properly connected, RTL alignment correct, badges clearly separated".
+- hero-dots (y715 desktop) unaffected — always below the caption, no overlap.
+
+Files changed: static-site/css/style.css, public/css/style.css (mirrored).
+
+Stage Summary: Hero text overlap fixed by relocating the "100% Documented" floating badge from bottom-left (where it collided with the slide caption) to top-left. Both floating badges now sit at the top corners; caption pill + dots remain at the bottom undisturbed. Verified no overlaps on desktop, mobile, and Arabic RTL.

@@ -707,11 +707,14 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   box-shadow: 0 18px 38px -18px rgba(14, 31, 61, 0.4);
 }
 .float-badge .icon { width: 18px; height: 18px; color: var(--gold-600); }
+/* Floating badges — one top-right (Support), one top-left (Verified).
+   Both pinned to the top so they never collide with the rotating slide
+   caption pill that sits at the bottom of the hero frame. */
 .badge-support { top: 24px; inset-inline-end: -16px; }
-.badge-verified { bottom: 58px; inset-inline-start: -18px; }
+.badge-verified { top: 24px; inset-inline-start: -18px; }
 @media (max-width: 640px) {
   .badge-support { top: 12px; inset-inline-end: 8px; padding: 9px 13px; font-size: 0.78rem; }
-  .badge-verified { bottom: 46px; inset-inline-start: 8px; padding: 9px 13px; font-size: 0.78rem; }
+  .badge-verified { top: 12px; inset-inline-start: 8px; padding: 9px 13px; font-size: 0.78rem; }
 }
 
 .pulse-dot {
