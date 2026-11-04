@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Yes — the logo sits in a clean white rounded chip with the gold star emblem and \"BENGAL STAR\" text rendering clearly, no distortion or black box.\n\n2) Yes — Arabic footer text (تواصل، عمالتنا، روابط سريعة، etc.) renders correctly with no broken glyphs.\n\n3) No — the footer layout is intact: three columns aligned properly in RTL, social icons row, and bottom bar with copyright on the right and service links on the left all look correct.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1793779367,
+  "id": "20261104160242f56bb696d41e4c83",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261104160242f56bb696d41e4c83",
+  "usage": {
+    "completion_tokens": 107,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1814,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1921
+  }
+}

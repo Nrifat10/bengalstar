@@ -328,16 +328,17 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   height: var(--nav-h);
 }
 
-/* Brand — real company logo (local asset: /images/logo.png, 688×363) */
+/* Brand — real company logo (wide transparent lockup, /images/logo-wide.png, 1048×238,
+   includes "Together for a Better Tomorrow" tagline) */
 .brand { display: inline-flex; align-items: center; flex-shrink: 0; }
 .brand-logo {
   display: block;
-  height: 46px;
+  height: 48px;
   width: auto;
   transition: transform 0.3s var(--ease);
 }
 .brand:hover .brand-logo { transform: scale(1.03); }
-@media (max-width: 400px) { .brand-logo { height: 34px; } }
+@media (max-width: 400px) { .brand-logo { height: 36px; } }
 
 /* Desktop menu — appears from 960px (was 1024px, lowered for preview widths).
    NOTE: keep this media query AFTER the .hamburger / .lang-toggle base rules
@@ -441,7 +442,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   .nav-cta { padding: 10px 14px; font-size: 0.84rem; }
   .lang-toggle { padding: 0.45rem 0.7rem; font-size: 0.82rem; }
   .nav-actions { gap: 8px; }
-  .brand-logo { height: 40px; }
+  .brand-logo { height: 42px; }
 }
 
 /* Mobile slide-in menu (light panel) */
@@ -1755,12 +1756,14 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
 @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.25fr; } }
 
+/* Footer logo — full stacked transparent logo (/images/logo-full.png, 600×316)
+   shown in a clean white chip so the navy/gold artwork pops on the dark footer */
 .footer-logo {
   display: block;
-  height: 72px;
+  height: 78px;
   width: auto;
   background: #fff;
-  padding: 10px 18px;
+  padding: 12px 22px;
   border-radius: 14px;
   box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.55);
   transition: transform 0.3s var(--ease);

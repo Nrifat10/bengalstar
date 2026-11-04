@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) **Logo:** Yes — the gold star + \"BENGAL STAR LIMITED COMPANY\" logo renders cleanly on the far right, with no distortion or black box.\n\n2) **Arabic text:** Yes — all navbar items (من نحن، خدماتنا، لماذا نحن، كيف نعمل، التغطية، الأسئلة الشائعة، اتصل بنا) render correctly with proper RTL ordering, no broken glyphs or overlap.\n\n3) **Layout:** No breakage — logo is correctly positioned at the right, menu flows right-to-left, and the \"EN\" language toggle + gold CTA button (\"اطلب عملية\") sit properly at the left end. The active-item underline under \"من نحن\" is also intact.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1793779324,
+  "id": "20261104160157d8692fce7b2e4b9a",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261104160157d8692fce7b2e4b9a",
+  "usage": {
+    "completion_tokens": 156,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1817,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1973
+  }
+}
