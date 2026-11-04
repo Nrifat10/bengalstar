@@ -59,3 +59,11 @@ prompt
 server.log
 # Skills directory
 /skills/
+# Verification screenshots / VLM dumps / tool artifacts (never commit)
+7v1-*
+8v1-*
+*-vlm.json
+tool-results/
+.zscripts/
+static-site/
+server.log
