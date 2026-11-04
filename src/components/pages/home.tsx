@@ -6,8 +6,10 @@ import {
   ArrowRight,
   BadgeDollarSign,
   Calculator,
+  CalendarCheck,
   Check,
   CheckCircle2,
+  ChevronDown,
   Clock,
   Droplets,
   FileCheck2,
@@ -76,7 +78,8 @@ const HERO_STATS = [
 const SLIDE_INTERVAL_MS = 4500;
 
 /* ---------------------------------------------------------------------------
-   1. Hero — light premium split layout with auto-rotating visual slider
+   1. Hero — dark premium navy/gold split layout with auto-rotating slider,
+      thumbnail rail, frosted-glass stats & floating badges, trust strip.
 --------------------------------------------------------------------------- */
 
 function HeroSection() {
@@ -93,43 +96,71 @@ function HeroSection() {
 
   const slide = t.hero.slides[index];
   const statLabels = [t.hero.stat1, t.hero.stat2, t.hero.stat3];
+  const chips: { Icon: LucideIcon; label: string }[] = [
+    { Icon: ShieldCheck, label: t.hero.chipLicensed },
+    { Icon: Clock, label: t.hero.chipGuarantee },
+    { Icon: CalendarCheck, label: t.hero.chipSince },
+  ];
+
+  const scrollToBrands = () => {
+    document
+      .getElementById("brands")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-navy-grad text-white">
       {/* Decorative layers */}
-      <div className="absolute inset-0 bg-gridlines-light" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gridlines" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -top-24 end-0 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+        className="pointer-events-none absolute -top-32 end-[-12%] h-[30rem] w-[30rem] rounded-full bg-gold/15 blur-3xl"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-0 start-0 h-[28rem] w-[28rem] rounded-full bg-brand/5 blur-3xl"
+        className="pointer-events-none absolute bottom-[-25%] start-[-10%] h-[28rem] w-[28rem] rounded-full bg-brand-3/30 blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           {/* Copy column */}
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold-soft px-4 py-1.5 text-xs font-semibold text-gold-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-semibold text-gold-2 backdrop-blur-sm">
               <StarIcon className="h-3.5 w-3.5" />
               {t.hero.badge}
             </span>
 
-            <h1 className="mt-5 text-4xl font-bold leading-[1.08] text-brand sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-6 text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]">
               <span className="block">{t.hero.titleA}</span>
-              <span className="block text-gold-grad">{t.hero.titleB}</span>
+              <span className="relative inline-block gold-shimmer">
+                {t.hero.titleB}
+                <svg
+                  className="absolute -bottom-2.5 start-0 h-2.5 w-full text-gold/60"
+                  viewBox="0 0 200 10"
+                  fill="none"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 7c50-5 110-6 196-2"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    opacity="0.7"
+                  />
+                </svg>
+              </span>
               <span className="block">{t.hero.titleC}</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
               {t.hero.sub}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href={routeHref("contact")}
-                className="btn-shine inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-3 via-gold to-gold-2 px-8 text-sm font-semibold text-brand shadow-lg shadow-gold/25 transition-transform hover:-translate-y-0.5"
+                className="btn-shine inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-3 via-gold to-gold-2 px-8 text-sm font-semibold text-brand shadow-lg shadow-gold/30 transition-transform hover:-translate-y-0.5"
               >
                 {t.hero.cta1}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
@@ -139,20 +170,24 @@ function HeroSection() {
                 href={`${SITE.whatsapp}?text=${encodeURIComponent(t.contact.whatsappMsg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-8 text-sm font-semibold text-brand transition-colors hover:border-gold/50"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-gold/50 hover:bg-white/15 hover:text-gold-2"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 {t.hero.cta2}
               </a>
             </div>
 
-            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-6">
+            {/* Stats — frosted glass cards with gold counters */}
+            <dl className="mt-10 grid grid-cols-3 gap-3 sm:gap-4">
               {HERO_STATS.map((stat, i) => (
-                <div key={statLabels[i]} className="flex flex-col">
-                  <dt className="order-2 mt-1 text-xs text-muted-foreground sm:text-sm">
+                <div
+                  key={statLabels[i]}
+                  className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm transition-colors hover:border-gold/30 hover:bg-white/10 sm:p-5"
+                >
+                  <dt className="order-2 mt-1 text-[11px] leading-snug text-white/60 sm:text-xs">
                     {statLabels[i]}
                   </dt>
-                  <dd className="order-1 text-3xl font-bold text-brand">
+                  <dd className="order-1 text-2xl font-bold text-gold-grad sm:text-3xl">
                     <Counter target={stat.target} suffix={stat.suffix} />
                   </dd>
                 </div>
@@ -160,80 +195,145 @@ function HeroSection() {
             </dl>
           </Reveal>
 
-          {/* Visual column — auto-rotating slider */}
+          {/* Visual column — auto-rotating slider + thumbnail rail */}
           <Reveal delay={0.15} className="relative">
-            {/* Gold corner accent (peeks out behind the card) */}
+            {/* Soft gold glow behind the card */}
             <div
-              className="pointer-events-none absolute -bottom-5 -end-5 h-28 w-28 rotate-12 rounded-3xl border-2 border-gold/50"
+              className="pointer-events-none absolute -inset-8 rounded-[2.5rem] bg-gold/10 blur-3xl"
               aria-hidden="true"
             />
 
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-card shadow-xl shadow-brand/10 sm:aspect-[5/5]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={index}
-                  className="absolute inset-0"
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                >
-                  <img
-                    src={HERO_SLIDES[index]}
-                    alt={slide.caption}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
+            <div className="relative">
+              {/* Gold corner accent (peeks out behind the card) */}
+              <div
+                className="pointer-events-none absolute -bottom-5 -end-5 h-24 w-24 rotate-12 rounded-3xl border-2 border-gold/40"
+                aria-hidden="true"
+              />
 
-              {/* Caption bar */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand/85 to-transparent px-5 pb-4 pt-16">
-                <p className="text-sm font-medium text-white">{slide.caption}</p>
-                <div className="mt-3 flex items-center gap-2">
-                  {t.hero.slides.map((dot, i) => (
-                    <button
-                      key={dot.caption}
-                      type="button"
-                      onClick={() => setIndex(i)}
-                      aria-label={dot.caption}
-                      className="rounded-full p-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
-                    >
-                      <span
-                        className={cn(
-                          "block h-2 rounded-full transition-all duration-300",
-                          i === index ? "w-6 bg-gold" : "w-2 bg-white/40"
-                        )}
-                      />
-                    </button>
-                  ))}
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-black/40 ring-1 ring-white/15 sm:aspect-[5/5]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={index}
+                    className="absolute inset-0"
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                  >
+                    <img
+                      src={HERO_SLIDES[index]}
+                      alt={slide.caption}
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Slide counter */}
+                <div
+                  className="absolute end-4 top-4 rounded-full border border-white/20 bg-brand/60 px-3 py-1 text-[11px] font-semibold tracking-widest text-white/90 backdrop-blur-md"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, "0")} /{" "}
+                  {String(HERO_SLIDES.length).padStart(2, "0")}
                 </div>
+
+                {/* Caption bar */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand/95 via-brand/55 to-transparent px-5 pb-4 pt-20">
+                  <p className="text-sm font-medium text-white">{slide.caption}</p>
+                  <div className="mt-3 flex items-center gap-2">
+                    {t.hero.slides.map((dot, i) => (
+                      <button
+                        key={dot.caption}
+                        type="button"
+                        onClick={() => setIndex(i)}
+                        aria-label={dot.caption}
+                        className="rounded-full p-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
+                      >
+                        <span
+                          className={cn(
+                            "block h-2 rounded-full transition-all duration-300",
+                            i === index ? "w-6 bg-gold" : "w-2 bg-white/40"
+                          )}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge — 24/7 support (gentle float) */}
+              <div className="animate-float absolute -top-4 end-5 flex items-center gap-2 rounded-full border border-white/20 bg-brand/70 px-4 py-2 shadow-lg shadow-black/30 backdrop-blur-md">
+                <span
+                  className="relative flex h-2.5 w-2.5 rounded-full bg-emerald-400 pulse-dot text-emerald-400"
+                  aria-hidden="true"
+                />
+                <span className="text-xs font-semibold text-white">
+                  {t.hero.badgeSupport}
+                </span>
+              </div>
+
+              {/* Floating badge — verified (delayed float) */}
+              <div className="animate-float-delay absolute bottom-24 start-5 flex items-center gap-2 rounded-2xl border border-white/20 bg-brand/70 px-4 py-2.5 shadow-lg shadow-black/30 backdrop-blur-md">
+                <ShieldCheck className="h-4 w-4 text-gold-2" aria-hidden="true" />
+                <span className="text-xs font-semibold text-white">
+                  {t.hero.badgeVerified}
+                </span>
               </div>
             </div>
 
-            {/* Floating badge — 24/7 support */}
-            <div className="absolute -top-3 end-4 hidden items-center gap-2 rounded-full border border-border bg-white px-4 py-2 shadow-lg shadow-brand/10 sm:flex">
-              <span
-                className="relative flex h-2.5 w-2.5 rounded-full bg-emerald-500 pulse-dot text-emerald-500"
-                aria-hidden="true"
-              />
-              <span className="text-xs font-semibold text-brand">
-                {t.hero.badgeSupport}
-              </span>
-            </div>
-
-            {/* Floating badge — verified */}
-            <div className="absolute bottom-24 start-4 hidden items-center gap-2 rounded-2xl border border-border bg-white px-4 py-2.5 shadow-lg shadow-brand/10 sm:flex">
-              <ShieldCheck
-                className="h-4 w-4 text-gold-3"
-                aria-hidden="true"
-              />
-              <span className="text-xs font-semibold text-brand">
-                {t.hero.badgeVerified}
-              </span>
+            {/* Thumbnail rail */}
+            <div className="mt-4 flex items-center gap-2 sm:gap-2.5">
+              {t.hero.slides.map((dot, i) => (
+                <button
+                  key={dot.caption}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={dot.caption}
+                  aria-current={i === index ? "true" : undefined}
+                  className="group relative overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold/70"
+                >
+                  <img
+                    src={HERO_SLIDES[i]}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className={cn(
+                      "h-11 w-14 object-cover transition-all duration-300 sm:h-12 sm:w-[4.25rem]",
+                      i === index
+                        ? "opacity-100 ring-2 ring-gold"
+                        : "opacity-45 ring-1 ring-white/25 group-hover:opacity-80"
+                    )}
+                  />
+                </button>
+              ))}
             </div>
           </Reveal>
+        </div>
+      </div>
+
+      {/* Bottom trust strip */}
+      <div className="relative border-t border-white/10">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-4 px-4 py-5 sm:px-6 lg:px-8">
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            {chips.map(({ Icon, label }) => (
+              <li key={label} className="flex items-center gap-2">
+                <Icon className="h-4 w-4 shrink-0 text-gold-2" aria-hidden="true" />
+                <span className="text-xs font-medium text-white/70">{label}</span>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            onClick={scrollToBrands}
+            className="hidden items-center gap-2 text-xs font-medium text-white/60 transition-colors hover:text-gold-2 sm:flex"
+          >
+            {t.hero.scroll}
+            <ChevronDown
+              className="animate-bounce-soft h-4 w-4 rtl:rotate-180"
+              aria-hidden="true"
+            />
+          </button>
         </div>
       </div>
     </section>

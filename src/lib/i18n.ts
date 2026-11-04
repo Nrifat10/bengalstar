@@ -105,6 +105,10 @@ export const DICT = {
       stat3: "Client satisfaction",
       badgeSupport: "24/7 Support",
       badgeVerified: "100% Documented",
+      chipLicensed: "CR Licensed & Compliant",
+      chipGuarantee: "72-Hour Replacement Guarantee",
+      chipSince: "Trusted Since 2014",
+      scroll: "Scroll to explore",
       slides: [
         { caption: "Modern station forecourts" },
         { caption: "Attendants serving the pumps" },
@@ -462,6 +466,10 @@ export const DICT = {
       stat3: "رضا العملاء",
       badgeSupport: "دعم 24/7",
       badgeVerified: "موثّقون 100%",
+      chipLicensed: "مرخّصة ومتوافقة نظاميًا",
+      chipGuarantee: "ضمان استبدال خلال 72 ساعة",
+      chipSince: "ثقة منذ 2014",
+      scroll: "مرّر للاستكشاف",
       slides: [
         { caption: "ساحات محطات حديثة" },
         { caption: "مناوبون يخدمون المضخات" },

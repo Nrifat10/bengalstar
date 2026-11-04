@@ -333,4 +333,47 @@
   [aria-current="page"].nav-item-hover::after {
     width: 70%;
   }
+
+  /* ---- Hero micro-animations ---- */
+  /* Gentle vertical float for hero floating badges */
+  .animate-float {
+    animation: float-y 5s ease-in-out infinite;
+  }
+  .animate-float-delay {
+    animation: float-y 6.5s ease-in-out 1.2s infinite;
+  }
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+  }
+  /* Soft bouncing chevron for the scroll indicator */
+  .animate-bounce-soft {
+    animation: bounce-soft 2.2s ease-in-out infinite;
+  }
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50% { transform: translateY(5px); opacity: 1; }
+  }
+  /* Slow gold shimmer sweep across hero headline accent */
+  .gold-shimmer {
+    background: linear-gradient(100deg, #b8860b 0%, #e8b923 30%, #f5d76e 50%, #e8b923 70%, #b8860b 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-x 6s linear infinite;
+  }
+  @keyframes shimmer-x {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-delay,
+    .animate-bounce-soft,
+    .gold-shimmer {
+      animation: none;
+    }
+  }
 }
+/* cache-bust v10 */

@@ -22,6 +22,7 @@ export function BrandMarquee() {
 
   return (
     <section
+      id="brands"
       aria-label={t.marquee.label}
       className="relative border-y border-border bg-gradient-to-b from-white via-gold-soft/30 to-white py-10"
     >
