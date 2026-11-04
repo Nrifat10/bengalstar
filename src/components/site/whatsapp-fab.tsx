@@ -20,7 +20,7 @@ export function FloatingButtons() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed bottom-5 z-50 flex flex-col gap-3 end-5 sm:bottom-6 sm:end-6">
+    <div className="pointer-events-none fixed bottom-5 z-40 flex flex-col gap-3 end-5 sm:bottom-6 sm:end-6">
       {showTop && (
         <button
           type="button"

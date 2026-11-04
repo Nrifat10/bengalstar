@@ -241,4 +241,96 @@
   .nice-scroll::-webkit-scrollbar-thumb:hover {
     background: #a8b8d0;
   }
+
+  /* ---- Colorful brand marquee tiles ---- */
+  /* Each tile uses a per-brand gradient + tint passed as inline CSS vars. */
+  .brand-tile {
+    background-color: var(--brand-tint, #fff);
+    background-image: linear-gradient(140deg, var(--brand-tint, #fff) 0%, #ffffff 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(14, 31, 61, 0.06),
+      0 1px 2px rgba(14, 31, 61, 0.04);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  }
+  .brand-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(140deg, var(--brand-from, transparent) 0%, var(--brand-to, transparent) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .brand-tile:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 0 0 1px rgba(14, 31, 61, 0.1),
+      0 10px 22px -8px var(--brand-from, rgba(14, 31, 61, 0.25));
+  }
+  .brand-tile:hover::before {
+    opacity: 0.12;
+  }
+  /* Colorful glow strip under each tile (revealed on hover) */
+  .brand-tile::after {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--brand-from, transparent), var(--brand-to, transparent));
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .brand-tile:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* ---- Glass nav for desktop dropdowns ---- */
+  .nav-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+  }
+  .nav-dropdown {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    box-shadow:
+      0 12px 40px -10px rgba(14, 31, 61, 0.18),
+      0 0 0 1px rgba(14, 31, 61, 0.06);
+  }
+  /* Dropdown arrow caret that rotates when open */
+  .nav-caret {
+    transition: transform 0.25s ease;
+  }
+  [data-state="open"] .nav-caret {
+    transform: rotate(180deg);
+  }
+
+  /* Soft gradient ring used on hover for nav items */
+  .nav-item-hover {
+    position: relative;
+  }
+  .nav-item-hover::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--gold-3), var(--gold), var(--gold-2));
+    transform: translateX(-50%);
+    transition: width 0.28s ease;
+  }
+  .nav-item-hover:hover::after,
+  [data-state="open"].nav-item-hover::after,
+  [aria-current="page"].nav-item-hover::after {
+    width: 70%;
+  }
 }
