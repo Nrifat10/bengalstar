@@ -235,3 +235,39 @@ Verification (agent-browser, 3 viewports):
 Files changed: static-site/css/style.css, public/css/style.css (mirrored).
 
 Stage Summary: Hero text overlap fixed by relocating the "100% Documented" floating badge from bottom-left (where it collided with the slide caption) to top-left. Both floating badges now sit at the top corners; caption pill + dots remain at the bottom undisturbed. Verified no overlaps on desktop, mobile, and Arabic RTL.
+
+## 10-v1 — Task 10: Use client's 7 petrol station photos where they best fit
+
+Task: User uploaded 7 petrol station photos ("petrol station use koro zakhana best fit hoy" = use the petrol station [images] where they best fit). VLM-identify each, then place them in the most fitting spots.
+
+Work Log:
+- VLM identification of all 7 uploads (dimensions via PIL):
+  1. pasted_image_1793782497553.png — LITER (ليتر) station, daytime, attendants in yellow-black uniforms AT THE PUMPS, sharp, no watermark, 700×467 landscape
+  2. pasted_image_1793782516281.png — ENOC grand opening, daytime, staff visible, sharp, no watermark, 1000×666 landscape
+  3. pasted_image_1793782531686.png — ENOC/EPPCO orange canopy, no people, no watermark, 350×208 LOW-RES
+  4. pasted_image_1793782561023.png — SASCO (ساسكو) station — REJECTED: visible Shutterstock watermark (id 2273013883)
+  5. pasted_image_1793782605382.png — JIOIL station with price pylon, casual phone quality, no watermark, 430×370 square
+  6. pasted_image_1793782629052.png — WEAL (ويل) station forecourt w/ store, good quality, no watermark, 1280×720 landscape (highest res)
+  7. pasted_image_1793782681651.png — Go station curved canopy, low angle, sharp, no watermark, 480×640 PORTRAIT
+- Placement decision (best fit):
+  * Hero slider replaced 4 generic CDN station photos with the client's OWN 5 station photos, expanded 4 → 5 slides: hero-1 station-go.png (portrait, crisp 1.04× in card), hero-2 station-liter.png (attendants working — strongest on-message image for a manpower company), hero-3 station-weal.png (1280×720 downscales = crisp), hero-4 station-enoc.png (opening w/ staff), hero-5 station-jioil.png (1.58× upscale desktop, crisp on mobile).
+  * about-team (small 46% overlap image in About collage, displayed ~247×208) → station-forecourt.png: the low-res 350×208 photo DOWNSCALES there = crisp (in the big hero card it would have upscaled 2.8× = blurry). Replaced the generic Unsplash team stock photo.
+  * Rejected: SASCO photo (Shutterstock watermark — user has rejected watermarked images twice before).
+- Files: copied 6 semantic-named images to static-site/images/ + public/images/ (station-go/liter/weal/enoc/jioil/forecourt.png).
+- js/images.js: hero-1..5 → local /images/station-*.png; about-team → /images/station-forecourt.png; header comment rewritten documenting the swap + rejection.
+- index.html: 4 existing .h-slide divs updated (true width/height attrs, new static alts) + 5th slide added (hero-5 JIOIL, loading=lazy). about-img-sm width/height → 350×208, alt → "Client station forecourt".
+- js/translations.js: EN+AR slide captions updated for the new photo order (slide1 "Attendants serving the pumps"/"مناوبون يخدمون المضخات", slide3 "Fully staffed station openings"/"افتتاحات محطات بكوادر كاملة", slide4 "Kingdom-wide service" moved last) + img.hero1..hero5 alts rewritten to describe the actual photos + img.aboutTeam → "Client station forecourt"/"ساحة محطة عميل".
+- Mirrored index.html / js/images.js / js/translations.js to public/ (diff MATCH ×3).
+
+Verification (agent-browser + VLM):
+- Routes: all 6 station-*.png → 200; index.html → 200.
+- Desktop 1280: slideCount=5, dotCount=5 (dots auto-built from slides.length), all 5 imgs loaded (natural sizes match), no fallback placeholders. Rotation confirmed (active slide advanced 0→3 over ~25s, 6s interval). VLM hero: "photo sharp, well-lit, both floating badges render cleanly, caption pill crisp and properly positioned". VLM About collage: "large photo, smaller overlapping photo, 10+ Years badge all display sharp, undistorted, intended layering, no visual issues".
+- About small img: loaded, displayed 247×208 (downscale = crisp), alt updated.
+- Mobile 390: frame 350×280, allLoaded=true, dotCount=5, hOverflow=false. VLM AR mobile: "photo card renders cleanly, overlay badges sit correctly, Arabic text proper RTL shaping".
+- AR RTL: dir=rtl, 5 slides, Arabic captions + alts live (hero caption "خدمة في جميع أنحاء المملكة", aboutAlt "ساحة محطة عميل").
+- dev.log clean (all 200s).
+- Note: VLM initially flagged "badges/years badge not visible" in 2 screenshots — proven to be viewport-crop artifacts via DOM geometry checks (elements display:flex/grid, opacity 1, correct coordinates).
+
+Files changed: static-site/{index.html, js/images.js, js/translations.js} + mirrors; +6×2 image files (station-go/liter/weal/enoc/jioil/forecourt.png in static-site/images/ & public/images/).
+
+Stage Summary: Client's own station photos now power the site's most prominent imagery — hero slider (5 slides: Go, LITER w/ working attendants, WEAL, ENOC opening, JIOIL) + About collage small photo (ENOC forecourt). SASCO upload rejected for Shutterstock watermark; informed user in chat.

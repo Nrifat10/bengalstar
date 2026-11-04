@@ -6,10 +6,16 @@
      key  -> referenced from HTML via <img data-img="key">
      src  -> the image URL
 
-   Hero + about images are real / concept petrol stations from Saudi Arabia
-   and the Gulf (Aldrees, WATAN, Petromin, Oxygen, Fuel Way), hosted on a fast
-   external CDN. Service-card images (Task 2-v1, 2025-10-28) are subject-exact
-   stock photos sourced via z-ai image-search and individually VLM-verified
+   Hero slides + About images are the client's OWN station photos, uploaded
+   2025-11-04 (Task 10-v1) and individually VLM-verified: Go station with
+   curved canopy (portrait), LITER forecourt with uniformed attendants
+   working the pumps, WEAL station with store, ENOC grand opening with
+   staff, JIOIL station with price pylon, plus an ENOC forecourt used in
+   the About media collage. One upload was rejected: a SASCO station photo
+   carried a visible Shutterstock watermark (id 2273013883).
+
+   Service-card images (Task 2-v1, 2025-10-28) are subject-exact stock
+   photos sourced via z-ai image-search and individually VLM-verified
    to match each service (fuel attendant with nozzle-in-hand, worker in a
    car-wash bay, store clerk inside a minimart, cashier at a POS terminal,
    mechanic with an impact wrench on a wheel, forecourt supervisor).
@@ -29,22 +35,26 @@
    ========================================================================== */
 
 const IMAGES = [
-  /* ----- Hero image-card slides (4) — Saudi stations ----- */
+  /* ----- Hero image-card slides (5) — client's own Saudi stations ----- */
   {
     key: "hero-1",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8e7d7915dbb5.jpg"
+    src: "/images/station-go.png"
   },
   {
     key: "hero-2",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f5e6ac590faf.jpg"
+    src: "/images/station-liter.png"
   },
   {
     key: "hero-3",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dfd19ba8a000.jpg"
+    src: "/images/station-weal.png"
   },
   {
     key: "hero-4",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8337db80054a.jpeg"
+    src: "/images/station-enoc.png"
+  },
+  {
+    key: "hero-5",
+    src: "/images/station-jioil.png"
   },
 
   /* ----- About ----- */
@@ -54,7 +64,7 @@ const IMAGES = [
   },
   {
     key: "about-team",
-    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=800&q=70"
+    src: "/images/station-forecourt.png"
   },
 
   /* ----- Service cards (6) ----- */

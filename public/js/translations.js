@@ -53,8 +53,9 @@ const TRANSLATIONS = {
       badgeVerified: "100% Documented",
       slides: [
         { caption: "Modern station forecourts" },
+        { caption: "Attendants serving the pumps" },
         { caption: "24/7 station operations" },
-        { caption: "Highway & city coverage" },
+        { caption: "Fully staffed station openings" },
         { caption: "Kingdom-wide service" }
       ]
     },
@@ -274,12 +275,13 @@ const TRANSLATIONS = {
 
     img: {
       logo: "Bangla Star Co., Ltd logo",
-      hero1: "Modern petrol station forecourt in Saudi Arabia",
-      hero2: "Petrol station glowing at night in the Kingdom",
-      hero3: "Fuel station on a Saudi highway",
-      hero4: "Professional station teams at work",
+      hero1: "Modern Go fuel station with curved canopy in Saudi Arabia",
+      hero2: "Fuel attendants in uniform serving customers at a LITER station",
+      hero3: "WEAL petrol station forecourt with convenience store",
+      hero4: "Grand opening of an ENOC petrol station with staff",
+      hero5: "JIOIL fuel station with price pylon sign in Saudi Arabia",
       aboutMain: "Bangla Star management team at a client station in Riyadh",
-      aboutTeam: "Trained workers team in uniform",
+      aboutTeam: "Client station forecourt",
       serviceFuel: "Fuel attendant refuelling a customer's car",
       serviceCarwash: "Car wash worker spraying foam on a vehicle",
       serviceStore: "Well-stocked convenience store shelves",
@@ -332,8 +334,9 @@ const TRANSLATIONS = {
       badgeVerified: "موثّقون 100%",
       slides: [
         { caption: "ساحات محطات حديثة" },
+        { caption: "مناوبون يخدمون المضخات" },
         { caption: "عمليات على مدار الساعة" },
-        { caption: "تغطية الطرق السريعة والمدن" },
+        { caption: "افتتاحات محطات بكوادر كاملة" },
         { caption: "خدمة في جميع أنحاء المملكة" }
       ]
     },
@@ -553,12 +556,13 @@ const TRANSLATIONS = {
 
     img: {
       logo: "شعار شركة بنجلا ستار المحدودة",
-      hero1: "ساحة محطة وقود حديثة في السعودية",
-      hero2: "محطة وقود مضيئة ليلاً في المملكة",
-      hero3: "محطة وقود على طريق سريع سعودي",
-      hero4: "فرق محطات محترفة في العمل",
+      hero1: "محطة وقود Go حديثة بمظلة منحنية في السعودية",
+      hero2: "مناوبو وقود بالزي الرسمي يخدمون العملاء في محطة ليتر",
+      hero3: "ساحة محطة وقود WEAL مع متجر للتجزئة",
+      hero4: "افتتاح محطة وقود ENOC بحضور فريق العمل",
+      hero5: "محطة وقود JIOIL مع لوحة أسعار في السعودية",
       aboutMain: "فريق إدارة بنجلا ستار في محطة عميل بالرياض",
-      aboutTeam: "فريق عمال مدرب بالزي الرسمي",
+      aboutTeam: "ساحة محطة عميل",
       serviceFuel: "ملّاك وقود يخدمون سيارة عميل",
       serviceCarwash: "عامل غسيل يرشّ الرغوة على مركبة",
       serviceStore: "رفوف متجر ممتلئة بالمنتجات",
