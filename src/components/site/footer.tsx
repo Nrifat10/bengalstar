@@ -1,7 +1,8 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { IMAGES, SITE } from "@/lib/i18n";
+import { BRANDS, IMAGES, SITE } from "@/lib/i18n";
 import { useLang } from "./lang-provider";
 import { routeHref } from "./router";
 import { WhatsAppIcon } from "./icons";
@@ -33,7 +34,34 @@ export function Footer() {
         className="pointer-events-none absolute -top-40 end-0 h-96 w-96 rounded-full bg-brand-3/40 blur-3xl"
         aria-hidden="true"
       />
+      {/* Soft colorful glow behind the brand strip */}
+      <div
+        className="pointer-events-none absolute top-8 start-1/2 h-40 w-[40rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
+        aria-hidden="true"
+      />
 
+      {/* ─── Colorful brand logo strip ─────────────────────────────────── */}
+      <div className="relative border-b border-white/10">
+        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-col items-center gap-2 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-2 backdrop-blur-sm">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-pink-500 via-amber-500 to-emerald-500"
+                aria-hidden="true"
+              />
+              {t.marquee.label}
+            </span>
+          </div>
+
+          <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+            {BRANDS.map((brand) => (
+              <FooterBrandTile key={brand.name} brand={brand} />
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* ─── Main footer grid ──────────────────────────────────────────── */}
       <div className="relative mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
           {/* Brand */}
@@ -151,5 +179,43 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Colorful brand tile — reuses the global `.brand-tile` utility (defined in
+   globals.css) so the footer tiles match the marquee tiles exactly: full-color
+   logo on a brand-tinted backdrop, hover lift + gradient veil + glow strip.
+   Smaller than the marquee tiles so 13 fit nicely in the footer.
+--------------------------------------------------------------------------- */
+type Brand = (typeof BRANDS)[number];
+
+function FooterBrandTile({ brand }: { brand: Brand }) {
+  const style = {
+    "--brand-from": brand.from,
+    "--brand-to": brand.to,
+    "--brand-tint": brand.tint,
+  } as CSSProperties;
+
+  return (
+    <li>
+      <div
+        style={style}
+        className="brand-tile relative flex h-12 w-20 items-center justify-center rounded-lg px-2.5 sm:h-14 sm:w-[96px] sm:px-3"
+      >
+        <img
+          src={brand.logo}
+          alt={brand.name}
+          loading="lazy"
+          decoding="async"
+          className="relative z-10 max-h-7 w-auto max-w-full object-contain drop-shadow-[0_1px_2px_rgba(14,31,61,0.18)] sm:max-h-8"
+        />
+        <span
+          className="absolute end-2 top-2 h-1.5 w-1.5 rounded-full"
+          style={{ background: brand.from }}
+          aria-hidden="true"
+        />
+      </div>
+    </li>
   );
 }
