@@ -1,8 +1,8 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { BRANDS, IMAGES, SITE } from "@/lib/i18n";
+import type { ReactNode } from "react";
+import { MapPin, Phone, Mail, Clock, MapPinned, Headset } from "lucide-react";
+import { IMAGES, SITE } from "@/lib/i18n";
 import { useLang } from "./lang-provider";
 import { routeHref } from "./router";
 import { WhatsAppIcon } from "./icons";
@@ -34,29 +34,21 @@ export function Footer() {
         className="pointer-events-none absolute -top-40 end-0 h-96 w-96 rounded-full bg-brand-3/40 blur-3xl"
         aria-hidden="true"
       />
-      {/* Soft colorful glow behind the brand strip */}
+      {/* Soft gold glow at the top */}
       <div
-        className="pointer-events-none absolute top-8 start-1/2 h-40 w-[40rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
+        className="pointer-events-none absolute top-6 start-1/2 h-32 w-[44rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
         aria-hidden="true"
       />
 
-      {/* ─── Colorful brand logo strip ─────────────────────────────────── */}
+      {/* ─── Trust strip (replaces the duplicate brand-logo strip) ─────── */}
       <div className="relative border-b border-white/10">
-        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="mb-6 flex flex-col items-center gap-2 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-2 backdrop-blur-sm">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-pink-500 via-amber-500 to-emerald-500"
-                aria-hidden="true"
-              />
-              {t.marquee.label}
-            </span>
-          </div>
-
-          <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            {BRANDS.map((brand) => (
-              <FooterBrandTile key={brand.name} brand={brand} />
-            ))}
+        <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+          <ul className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6 lg:gap-10">
+            <TrustItem icon={<Clock className="h-4 w-4" />} text={t.stats.chip} />
+            <Divider />
+            <TrustItem icon={<MapPinned className="h-4 w-4" />} text={t.nav.coverageDesc} />
+            <Divider />
+            <TrustItem icon={<Headset className="h-4 w-4" />} text={t.hero.badgeSupport} />
           </ul>
         </div>
       </div>
@@ -66,14 +58,16 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
           {/* Brand */}
           <div>
-            <img
-              src={IMAGES.logoWide}
-              alt="Bengal Star Limited Company logo"
-              width={1048}
-              height={238}
-              className="h-10 w-auto brightness-0 invert"
-              decoding="async"
-            />
+            <div className="inline-flex rounded-2xl bg-white p-2.5 shadow-lg shadow-black/30 ring-1 ring-gold/25">
+              <img
+                src={IMAGES.logoWide}
+                alt="Bengal Star Limited Company logo"
+                width={1048}
+                height={238}
+                className="h-11 w-auto sm:h-12"
+                decoding="async"
+              />
+            </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
               {t.footer.tagline}
             </p>
@@ -183,39 +177,21 @@ export function Footer() {
 }
 
 /* ---------------------------------------------------------------------------
-   Colorful brand tile — reuses the global `.brand-tile` utility (defined in
-   globals.css) so the footer tiles match the marquee tiles exactly: full-color
-   logo on a brand-tinted backdrop, hover lift + gradient veil + glow strip.
-   Smaller than the marquee tiles so 13 fit nicely in the footer.
+   Trust strip item — compact icon + label badge that replaces the duplicate
+   brand-logo strip at the top of the footer. Those partner logos already run
+   in the homepage marquee, so we surface trust signals here instead.
 --------------------------------------------------------------------------- */
-type Brand = (typeof BRANDS)[number];
-
-function FooterBrandTile({ brand }: { brand: Brand }) {
-  const style = {
-    "--brand-from": brand.from,
-    "--brand-to": brand.to,
-    "--brand-tint": brand.tint,
-  } as CSSProperties;
-
+function TrustItem({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <li>
-      <div
-        style={style}
-        className="brand-tile relative flex h-12 w-20 items-center justify-center rounded-lg px-2.5 sm:h-14 sm:w-[96px] sm:px-3"
-      >
-        <img
-          src={brand.logo}
-          alt={brand.name}
-          loading="lazy"
-          decoding="async"
-          className="relative z-10 max-h-7 w-auto max-w-full object-contain drop-shadow-[0_1px_2px_rgba(14,31,61,0.18)] sm:max-h-8"
-        />
-        <span
-          className="absolute end-2 top-2 h-1.5 w-1.5 rounded-full"
-          style={{ background: brand.from }}
-          aria-hidden="true"
-        />
-      </div>
+    <li className="inline-flex items-center gap-2.5 text-sm text-white/75">
+      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold-2 ring-1 ring-gold/25">
+        {icon}
+      </span>
+      <span className="font-medium tracking-wide">{text}</span>
     </li>
   );
+}
+
+function Divider() {
+  return <li className="hidden h-4 w-px bg-white/15 sm:block" aria-hidden="true" />;
 }
