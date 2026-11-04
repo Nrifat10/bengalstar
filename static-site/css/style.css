@@ -328,36 +328,16 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   height: var(--nav-h);
 }
 
-/* Brand */
-.brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--grad-gold);
-  box-shadow: 0 8px 16px -6px rgba(184, 137, 20, 0.6);
-  flex-shrink: 0;
+/* Brand — real company logo (local asset: /images/logo.png, 688×363) */
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+.brand-logo {
+  display: block;
+  height: 46px;
+  width: auto;
+  transition: transform 0.3s var(--ease);
 }
-.brand-mark svg { width: 22px; height: 22px; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.12; }
-.brand-name {
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: 1.14rem;
-  color: var(--ink-900);
-  letter-spacing: -0.02em;
-}
-.brand-sub {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--gold-600);
-}
-@media (max-width: 400px) { .brand-sub { display: none; } }
+.brand:hover .brand-logo { transform: scale(1.03); }
+@media (max-width: 400px) { .brand-logo { height: 34px; } }
 
 /* Desktop menu — appears from 960px (was 1024px, lowered for preview widths).
    NOTE: keep this media query AFTER the .hamburger / .lang-toggle base rules
@@ -461,8 +441,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   .nav-cta { padding: 10px 14px; font-size: 0.84rem; }
   .lang-toggle { padding: 0.45rem 0.7rem; font-size: 0.82rem; }
   .nav-actions { gap: 8px; }
-  .brand-mark { width: 38px; height: 38px; }
-  .brand-name { font-size: 1.02rem; }
+  .brand-logo { height: 40px; }
 }
 
 /* Mobile slide-in menu (light panel) */
@@ -832,34 +811,38 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
-.wordmark {
+/* Client logo tiles — real station brand logos in uniform white cards.
+   Fixed tile height + object-fit:contain keeps every logo perfectly
+   fitted regardless of its native aspect ratio. */
+.brand-tile {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-inline-end: 60px;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.04rem;
-  letter-spacing: 0.05em;
-  color: #98A5BA;
-  white-space: nowrap;
-  transition: color 0.3s var(--ease);
-}
-.wordmark:hover { color: var(--ink-900); }
-.wordmark i {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background: currentColor;
-  opacity: 0.85;
+  justify-content: center;
+  height: 76px;
+  padding: 10px 18px;
+  margin-inline-end: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px -14px rgba(14, 31, 61, 0.25);
   flex-shrink: 0;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.wm-drop { border-radius: 50% 50% 50% 0; transform: rotate(45deg); }
-.wm-star {
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+.brand-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -14px rgba(14, 31, 61, 0.35);
 }
-.wm-cart { border-radius: 5px 5px 9px 9px; }
-.wm-bubble { border-radius: 50%; }
+.brand-tile img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+@media (max-width: 640px) {
+  .brand-tile { height: 58px; padding: 8px 12px; margin-inline-end: 14px; border-radius: 12px; }
+  .brand-tile img { max-width: 128px; }
+}
 
 /* ----------------------------------------------------------------------------
    7. About
@@ -1772,9 +1755,17 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
 @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.25fr; } }
 
-.footer .brand-name { color: #fff; }
-.footer .brand-sub { color: var(--gold-400); }
-.footer .brand-mark { box-shadow: 0 8px 18px -6px rgba(184, 137, 20, 0.5); }
+.footer-logo {
+  display: block;
+  height: 72px;
+  width: auto;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.3s var(--ease);
+}
+.brand:hover .footer-logo { transform: scale(1.02); }
 
 .footer-tagline {
   max-width: 320px;
@@ -1900,7 +1891,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4,
 [dir="rtl"] .btn, [dir="rtl"] .brand-name, [dir="rtl"] .nav-link,
 [dir="rtl"] .stat-value, [dir="rtl"] .stat-num, [dir="rtl"] .step-num,
-[dir="rtl"] .eyebrow, [dir="rtl"] .t-avatar, [dir="rtl"] .wordmark,
+[dir="rtl"] .eyebrow, [dir="rtl"] .t-avatar,
 [dir="rtl"] .service-body li, [dir="rtl"] .faq-item summary,
 [dir="rtl"] .t-slide blockquote {
   font-family: var(--font-ar);

@@ -60,7 +60,7 @@ const TRANSLATIONS = {
     },
 
     marquee: {
-      label: "Trusted by station networks across the Kingdom"
+      label: "Working with leading fuel brands across the Kingdom"
     },
 
     about: {
@@ -273,6 +273,7 @@ const TRANSLATIONS = {
     },
 
     img: {
+      logo: "Bangla Star Co., Ltd logo",
       hero1: "Modern petrol station forecourt in Saudi Arabia",
       hero2: "Petrol station glowing at night in the Kingdom",
       hero3: "Fuel station on a Saudi highway",
@@ -338,7 +339,7 @@ const TRANSLATIONS = {
     },
 
     marquee: {
-      label: "موثوقون من شبكات المحطات في جميع أنحاء المملكة"
+      label: "نعمل مع أبرز علامات الوقود في المملكة"
     },
 
     about: {
@@ -551,6 +552,7 @@ const TRANSLATIONS = {
     },
 
     img: {
+      logo: "شعار شركة بنجلا ستار المحدودة",
       hero1: "ساحة محطة وقود حديثة في السعودية",
       hero2: "محطة وقود مضيئة ليلاً في المملكة",
       hero3: "محطة وقود على طريق سريع سعودي",
