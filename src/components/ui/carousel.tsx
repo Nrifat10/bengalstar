@@ -95,6 +95,10 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
+    // Sync the initial selected snap. This is the standard embla-carousel
+    // wiring pattern (shadcn/ui). The new react-hooks/set-state-in-effect
+    // rule flags it; the call is intentional and safe here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onSelect(api)
     api.on("reInit", onSelect)
     api.on("select", onSelect)

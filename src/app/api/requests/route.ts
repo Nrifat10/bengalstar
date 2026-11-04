@@ -12,10 +12,48 @@ type RequestPayload = {
   workerType?: unknown;
   message?: unknown;
   lang?: unknown;
+  /* Bot-protection fields (never shown to humans) */
+  website?: unknown; // honeypot — bots fill this, humans never see it
+  t0?: unknown; // client page-load timestamp; bots submit instantly
 };
 
 const asString = (v: unknown): string =>
   typeof v === "string" ? v.trim() : "";
+
+const asNumber = (v: unknown): number =>
+  typeof v === "number" && Number.isFinite(v) ? v : 0;
+
+/* ---------------------------------------------------------------------------
+   Lightweight in-memory rate limiter (per IP).
+   Caps submissions to MAX_PER_WINDOW per WINDOW_MS per IP. On Vercel
+   serverless each instance keeps its own map, so this is a best-effort
+   deterrent rather than a hard global limit — for strict limits pair with
+   Upstash Redis. Sufficient to stop casual spam bots hitting the public
+   endpoint in a loop.
+--------------------------------------------------------------------------- */
+const MAX_PER_WINDOW = 5;
+const WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const ipHits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const hits = (ipHits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  hits.push(now);
+  ipHits.set(ip, hits);
+  // keep the map from growing forever
+  if (ipHits.size > 2000) {
+    for (const key of ipHits.keys()) {
+      if (ipHits.get(key)!.every((t) => now - t >= WINDOW_MS)) ipHits.delete(key);
+    }
+  }
+  return hits.length > MAX_PER_WINDOW;
+}
+
+function clientIp(req: NextRequest): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return req.headers.get("x-real-ip") ?? "unknown";
+}
 
 /**
  * Build a pre-filled WhatsApp deep link carrying the lead details.
@@ -46,8 +84,32 @@ function buildWhatsAppLink(p: {
 }
 
 export async function POST(req: NextRequest) {
+  const ip = clientIp(req);
+
+  /* Rate limit — too many submissions from one IP */
+  if (rateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = (await req.json()) as RequestPayload;
+
+    /* Honeypot — if the hidden "website" field is filled, this is a bot.
+       Pretend success so the bot can't tell it was caught. */
+    const honeypot = asString(body.website);
+    if (honeypot) {
+      return NextResponse.json({ ok: true, id: `hp-${Date.now()}` }, { status: 201 });
+    }
+
+    /* Min-submit-time — humans take >1.5s to fill a form; bots submit
+       near-instantly. Only enforce when t0 is provided. */
+    const t0 = asNumber(body.t0);
+    if (t0 > 0 && Date.now() - t0 < 1500) {
+      return NextResponse.json({ ok: true, id: `bt-${Date.now()}` }, { status: 201 });
+    }
 
     const name = asString(body.name);
     const phone = asString(body.phone);

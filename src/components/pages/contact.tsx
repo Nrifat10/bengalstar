@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   MapPin,
   Phone,
@@ -56,6 +56,10 @@ export function ContactPage() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [waLink, setWaLink] = useState<string | null>(null);
+  /* Honeypot for bots (humans never see/fill this) + page-load timestamp
+     to reject instant bot submissions. */
+  const [honeypot, setHoneypot] = useState("");
+  const t0Ref = useRef<number>(Date.now());
 
   const set = (key: keyof FormState) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -82,12 +86,13 @@ export function ContactPage() {
       const res = await fetch("/api/requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang }),
+        body: JSON.stringify({ ...form, lang, website: honeypot, t0: t0Ref.current }),
       });
       const data = (await res.json()) as { ok?: boolean; whatsapp?: string };
       if (!res.ok || !data.ok) throw new Error("request_failed");
       setSent(true);
       setForm(EMPTY_FORM);
+      setHoneypot("");
       setWaLink(typeof data.whatsapp === "string" ? data.whatsapp : null);
       toast({
         title: t.contact.form.success,
@@ -189,6 +194,30 @@ export function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} noValidate>
+                    {/* Honeypot anti-bot field — visually hidden, never
+                        labelled for humans. Bots auto-fill "website"; if
+                        filled, the API silently rejects the submission. */}
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        left: "-9999px",
+                        top: "auto",
+                        width: 1,
+                        height: 1,
+                        overflow: "hidden",
+                      }}
+                    >
+                      <label htmlFor="rf-website">Website</label>
+                      <Input
+                        id="rf-website"
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </div>
                     <div className="grid gap-6 sm:grid-cols-2">
                       {/* Name */}
                       <div className="space-y-2">

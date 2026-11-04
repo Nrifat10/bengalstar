@@ -75,7 +75,12 @@ export function FaqPage() {
 
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            dangerouslySetInnerHTML={{
+              // Escape `<` so the JSON payload can never break out of the
+              // <script> tag (defense-in-depth against </script> injection,
+              // even though faqSchema is built from controlled i18n data).
+              __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+            }}
           />
         </div>
       </section>
