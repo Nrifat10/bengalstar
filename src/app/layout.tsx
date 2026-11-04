@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -38,7 +38,21 @@ export const metadata: Metadata = {
     "Dammam",
   ],
   authors: [{ name: "Bengal Star Limited Company" }],
-  icons: { icon: "/favicon.svg" },
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: [{ url: "/favicon.ico" }],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Bengal Star",
+  },
   openGraph: {
     title: "Bengal Star Limited Company | Manpower Supply for Petrol Stations",
     description:
@@ -62,6 +76,13 @@ export const metadata: Metadata = {
       "Trained, verified workers for every corner of your station — 72-hour replacement guarantee & 24/7 bilingual support.",
     images: ["/og-bengal-star.jpeg"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0e1f3d",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
