@@ -1,30 +1,48 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora, Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const tajawal = Tajawal({
+  variable: "--font-tajawal",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Bangla Star Co., Ltd | Manpower Supply for Petrol Stations in Saudi Arabia",
-  description: "Trained, verified workers for petrol stations across Saudi Arabia — fuel attendants, car wash, bakala/store staff, cashiers, tire & oil change, supervisors and cleaners.",
-  keywords: ["manpower supply", "petrol station workers", "Saudi Arabia", "fuel attendants", "KSA staffing"],
-  authors: [{ name: "Bangla Star Co., Ltd" }],
-  icons: {
-    icon: "/favicon.svg",
-  },
+  title: "Bengal Star Limited Company | Manpower Supply for Petrol Stations in Saudi Arabia",
+  description:
+    "Bengal Star Limited Company supplies trained, fully-documented workers to petrol stations across Saudi Arabia — fuel attendants, car wash staff, bakala/store workers, cashiers, tire & oil change technicians, supervisors and cleaners. 72-hour replacement guarantee.",
+  keywords: [
+    "manpower supply Saudi Arabia",
+    "petrol station workers",
+    "fuel attendants KSA",
+    "station staffing",
+    "car wash staff",
+    "bakala staff",
+    "cashiers",
+    "Riyadh",
+    "Jeddah",
+    "Dammam",
+  ],
+  authors: [{ name: "Bengal Star Limited Company" }],
+  icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Bangla Star Co., Ltd",
-    description: "Manpower supply for petrol stations in Saudi Arabia",
-    siteName: "Bangla Star Co., Ltd",
+    title: "Bengal Star Limited Company",
+    description:
+      "Trained, verified workers for every corner of your station — with a 72-hour replacement guarantee and 24/7 bilingual support.",
+    siteName: "Bengal Star Limited Company",
     type: "website",
   },
 };
@@ -35,9 +53,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${sora.variable} ${inter.variable} ${tajawal.variable} antialiased bg-background text-foreground`}
       >
         {children}
         <Toaster />

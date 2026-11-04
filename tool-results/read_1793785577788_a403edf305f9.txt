@@ -1,0 +1,423 @@
+    30→   230→              <img data-img="hero-2" data-i18n-img="img.hero2" width="700" height="467" loading="lazy" decoding="async"
+    31→   231→                   alt="Fuel attendants in uniform serving customers at a LITER station">
+    32→   232→              <span class="h-caption" data-i18n="hero.slides.1.caption">Attendants serving the pumps</span>
+    33→   233→            </div>
+    34→   234→            <div class="h-slide slide" data-slide="2">
+    35→   235→              <img data-img="hero-3" data-i18n-img="img.hero3" width="1280" height="720" loading="lazy" decoding="async"
+    36→   236→                   alt="WEAL petrol station forecourt with convenience store">
+    37→   237→              <span class="h-caption" data-i18n="hero.slides.2.caption">24/7 station operations</span>
+    38→   238→            </div>
+    39→   239→            <div class="h-slide slide" data-slide="3">
+    40→   240→              <img data-img="hero-4" data-i18n-img="img.hero4" width="1000" height="666" loading="lazy" decoding="async"
+    41→   241→                   alt="Grand opening of an ENOC petrol station with staff">
+    42→   242→              <span class="h-caption" data-i18n="hero.slides.3.caption">Fully staffed station openings</span>
+    43→   243→            </div>
+    44→   244→            <div class="h-slide slide" data-slide="4">
+    45→   245→              <img data-img="hero-5" data-i18n-img="img.hero5" width="430" height="370" loading="lazy" decoding="async"
+    46→   246→                   alt="JIOIL fuel station with price pylon sign in Saudi Arabia">
+    47→   247→              <span class="h-caption" data-i18n="hero.slides.4.caption">Kingdom-wide service</span>
+    48→   248→            </div>
+    49→   249→          </div>
+    50→   250→
+    51→   251→          <!-- Floating badges -->
+    52→   252→          <div class="float-badge badge-support" aria-hidden="true">
+    53→   253→            <span class="pulse-dot"></span>
+    54→   254→            <span data-i18n="hero.badgeSupport">24/7 Support</span>
+    55→   255→          </div>
+    56→   256→          <div class="float-badge badge-verified" aria-hidden="true">
+    57→   257→            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+    58→   258→              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+    59→   259→            </svg>
+    60→   260→            <span data-i18n="hero.badgeVerified">100% Documented</span>
+    61→   261→          </div>
+    62→   262→
+    63→   263→          <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
+    64→   264→        </div>
+    65→   265→      </div>
+    66→   266→
+    67→   267→      <!-- Client logo marquee — real station & energy brands (13 logos; second set
+    68→   268→           carries class "dup" and is an exact copy of the first set for the seamless
+    69→   269→           -50% translate loop; hidden under prefers-reduced-motion) -->
+    70→   270→      <div class="hero-marquee">
+    71→   271→        <p class="marquee-label" data-i18n="marquee.label">Trusted by station networks across the Kingdom</p>
+    72→   272→        <div class="marquee" aria-hidden="true">
+    73→   273→          <div class="marquee-track">
+    74→   274→            <span class="brand-tile"><img src="/images/brand-naft.png" alt="NAFT" loading="lazy" decoding="async"></span>
+    75→   275→            <span class="brand-tile"><img src="/images/brand-sasco.png" alt="SASCO" loading="lazy" decoding="async"></span>
+    76→   276→            <span class="brand-tile"><img src="/images/brand-adnoc.png" alt="ADNOC Distribution" loading="lazy" decoding="async"></span>
+    77→   277→            <span class="brand-tile"><img src="/images/brand-weol.png" alt="WEOL" loading="lazy" decoding="async"></span>
+    78→   278→            <span class="brand-tile"><img src="/images/brand-petroly.png" alt="PETROLY" loading="lazy" decoding="async"></span>
+    79→   279→            <span class="brand-tile"><img src="/images/brand-aldrees.png" alt="ALDREES" loading="lazy" decoding="async"></span>
+    80→   280→            <span class="brand-tile"><img src="/images/brand-gulf.png" alt="Gulf" loading="lazy" decoding="async"></span>
+    81→   281→            <span class="brand-tile"><img src="/images/brand-petrolat.png" alt="Petrolat" loading="lazy" decoding="async"></span>
+    82→   282→            <span class="brand-tile"><img src="/images/brand-gostation.png" alt="GoStation" loading="lazy" decoding="async"></span>
+    83→   283→            <span class="brand-tile"><img src="/images/brand-benzene.png" alt="Benzene" loading="lazy" decoding="async"></span>
+    84→   284→            <span class="brand-tile"><img src="/images/brand-sasref.png" alt="SASREF" loading="lazy" decoding="async"></span>
+    85→   285→            <span class="brand-tile"><img src="/images/brand-alyat.png" alt="ALYAT" loading="lazy" decoding="async"></span>
+    86→   286→            <span class="brand-tile"><img src="/images/brand-okten.png" alt="OKTEN" loading="lazy" decoding="async"></span>
+    87→   287→            <span class="brand-tile dup"><img src="/images/brand-naft.png" alt="NAFT" loading="lazy" decoding="async"></span>
+    88→   288→            <span class="brand-tile dup"><img src="/images/brand-sasco.png" alt="SASCO" loading="lazy" decoding="async"></span>
+    89→   289→            <span class="brand-tile dup"><img src="/images/brand-adnoc.png" alt="ADNOC Distribution" loading="lazy" decoding="async"></span>
+    90→   290→            <span class="brand-tile dup"><img src="/images/brand-weol.png" alt="WEOL" loading="lazy" decoding="async"></span>
+    91→   291→            <span class="brand-tile dup"><img src="/images/brand-petroly.png" alt="PETROLY" loading="lazy" decoding="async"></span>
+    92→   292→            <span class="brand-tile dup"><img src="/images/brand-aldrees.png" alt="ALDREES" loading="lazy" decoding="async"></span>
+    93→   293→            <span class="brand-tile dup"><img src="/images/brand-gulf.png" alt="Gulf" loading="lazy" decoding="async"></span>
+    94→   294→            <span class="brand-tile dup"><img src="/images/brand-petrolat.png" alt="Petrolat" loading="lazy" decoding="async"></span>
+    95→   295→            <span class="brand-tile dup"><img src="/images/brand-gostation.png" alt="GoStation" loading="lazy" decoding="async"></span>
+    96→   296→            <span class="brand-tile dup"><img src="/images/brand-benzene.png" alt="Benzene" loading="lazy" decoding="async"></span>
+    97→   297→            <span class="brand-tile dup"><img src="/images/brand-sasref.png" alt="SASREF" loading="lazy" decoding="async"></span>
+    98→   298→            <span class="brand-tile dup"><img src="/images/brand-alyat.png" alt="ALYAT" loading="lazy" decoding="async"></span>
+    99→   299→            <span class="brand-tile dup"><img src="/images/brand-okten.png" alt="OKTEN" loading="lazy" decoding="async"></span>
+   100→   300→          </div>
+   101→   301→        </div>
+   102→   302→      </div>
+   103→   303→    </section>
+   104→   304→
+   105→   305→    <!-- ============================================================ -->
+   106→   306→    <!-- ABOUT                                                         -->
+   107→   307→    <!-- ============================================================ -->
+   108→   308→    <section class="section about" id="about">
+   109→   309→      <div class="container">
+   110→   310→        <div class="about-grid">
+   111→   311→          <div class="about-media reveal">
+   112→   312→            <img class="about-img" data-img="about-main" data-i18n-img="img.aboutMain" width="880" height="660" loading="lazy" decoding="async"
+   113→   313→                 alt="Bengal Star management team at a client station in Riyadh">
+   114→   314→            <img class="about-img-sm" data-img="about-team" data-i18n-img="img.aboutTeam" width="350" height="208" loading="lazy" decoding="async"
+   115→   315→                 alt="Client station forecourt">
+   116→   316→            <div class="badge-years" aria-hidden="true">
+   117→   317→              <span class="years-num"><span class="counter" data-count="10">0</span>+</span>
+   118→   318→              <span class="years-label" data-i18n="about.years">Years of experience</span>
+   119→   319→            </div>
+   120→   320→          </div>
+   121→   321→
+   122→   322→          <div class="about-copy">
+   123→   323→            <p class="eyebrow reveal" data-i18n="about.eyebrow">About Bengal Star</p>
+   124→   324→            <h2 class="section-title reveal" data-i18n="about.title">The workforce behind the Kingdom's busiest stations</h2>
+   125→   325→            <p class="lead reveal" data-i18n="about.p1">
+   126→   326→              Bengal Star Limited Company is a specialist manpower supply company headquartered in Riyadh. Since 2014 we have recruited, trained and deployed thousands of workers for petrol stations, fuel retail networks and highway service centers across Saudi Arabia.
+   127→   327→            </p>
+   128→   328→            <p class="muted reveal" data-i18n="about.p2">
+   129→   329→              Every candidate passes our in-house training program before reaching your forecourt — pump operation, customer service, POS systems and health &amp; safety. You get station-ready staff from day one, with all documents handled end-to-end.
+   130→   330→            </p>
+   131→   331→
+   132→   332→            <ul class="about-points reveal-group">
+   133→   333→              <li class="reveal">
+   134→   334→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+   135→   335→                <span data-i18n="about.point1">Licensed &amp; fully compliant recruitment</span>
+   136→   336→              </li>
+   137→   337→              <li class="reveal">
+   138→   338→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+   139→   339→                <span data-i18n="about.point2">Visa, Iqama, medical &amp; insurance handled</span>
+   140→   340→              </li>
+   141→   341→              <li class="reveal">
+   142→   342→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+   143→   343→                <span data-i18n="about.point3">In-house station-skills training center</span>
+   144→   344→              </li>
+   145→   345→              <li class="reveal">
+   146→   346→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+   147→   347→                <span data-i18n="about.point4">72-hour replacement guarantee</span>
+   148→   348→              </li>
+   149→   349→            </ul>
+   150→   350→
+   151→   351→            <div class="about-cta reveal">
+   152→   352→              <a href="#process" class="link-arrow">
+   153→   353→                <span data-i18n="about.cta">See how it works</span>
+   154→   354→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   155→   355→              </a>
+   156→   356→            </div>
+   157→   357→          </div>
+   158→   358→        </div>
+   159→   359→      </div>
+   160→   360→    </section>
+   161→   361→
+   162→   362→    <!-- ============================================================ -->
+   163→   363→    <!-- SERVICES                                                      -->
+   164→   364→    <!-- ============================================================ -->
+   165→   365→    <section class="section services" id="services">
+   166→   366→      <div class="container">
+   167→   367→        <div class="section-head reveal">
+   168→   368→          <p class="eyebrow" data-i18n="services.eyebrow">Our Services</p>
+   169→   369→          <h2 class="section-title" data-i18n="services.title">Workers for every corner of your station</h2>
+   170→   370→          <p class="section-sub" data-i18n="services.sub">One partner for the full station team — from the pump to the store to the service bay.</p>
+   171→   371→        </div>
+   172→   372→
+   173→   373→        <div class="services-grid reveal-group">
+   174→   374→          <!-- 1. Fuel Attendants -->
+   175→   375→          <article class="service-card reveal" data-worker="fuel">
+   176→   376→            <div class="service-media">
+   177→   377→              <img data-img="service-fuel" data-i18n-img="img.serviceFuel" width="640" height="400" loading="lazy" decoding="async"
+   178→   378→                   alt="Fuel attendant refuelling a customer's car">
+   179→   379→              <span class="service-chip" aria-hidden="true">
+   180→   380→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 22h12V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Zm0 5h-5m5 0 10 4m2-15h1l2 2m-2 9h1v-7h-1m-6 3h.01"/></svg>
+   181→   381→              </span>
+   182→   382→            </div>
+   183→   383→            <div class="service-body">
+   184→   384→              <h3 data-i18n="services.items.0.title">Fuel Attendants</h3>
+   185→   385→              <p data-i18n="services.items.0.desc">Vetted, uniformed and safety-trained attendants who keep your pumps busy and queues moving.</p>
+   186→   386→              <ul>
+   187→   387→                <li data-i18n="services.items.0.li1">Pump &amp; POS operation</li>
+   188→   388→                <li data-i18n="services.items.0.li2">Uniforms &amp; safety gear</li>
+   189→   389→                <li data-i18n="services.items.0.li3">Fuel-safety certified</li>
+   190→   390→              </ul>
+   191→   391→              <a href="#contact" class="service-link" data-worker="fuel">
+   192→   392→                <span data-i18n="services.request">Request this role</span>
+   193→   393→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   194→   394→              </a>
+   195→   395→            </div>
+   196→   396→          </article>
+   197→   397→
+   198→   398→          <!-- 2. Car Wash & Detailing -->
+   199→   399→          <article class="service-card reveal" data-worker="carwash">
+   200→   400→            <div class="service-media">
+   201→   401→              <img data-img="service-carwash" data-i18n-img="img.serviceCarwash" width="640" height="400" loading="lazy" decoding="async"
+   202→   402→                   alt="Car wash worker spraying foam on a vehicle">
+   203→   403→              <span class="service-chip" aria-hidden="true">
+   204→   404→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 2 8 7l1 6H7a2 2 0 0 0-2 2v6h14v-6a2 2 0 0 0-2-2h-2l1-6Z"/><path d="M5 21a2 2 0 0 0 2-2M19 21a2 2 0 0 1-2-2"/></svg>
+   205→   405→              </span>
+   206→   406→            </div>
+   207→   407→            <div class="service-body">
+   208→   408→              <h3 data-i18n="services.items.1.title">Car Wash &amp; Detailing</h3>
+   209→   409→              <p data-i18n="services.items.1.desc">Fast, careful wash crews that treat every vehicle like their own — inside and out.</p>
+   210→   410→              <ul>
+   211→   411→                <li data-i18n="services.items.1.li1">Hand &amp; machine wash</li>
+   212→   412→                <li data-i18n="services.items.1.li2">Interior detailing</li>
+   213→   413→                <li data-i18n="services.items.1.li3">Water-conscious methods</li>
+   214→   414→              </ul>
+   215→   415→              <a href="#contact" class="service-link" data-worker="carwash">
+   216→   416→                <span data-i18n="services.request">Request this role</span>
+   217→   417→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   218→   418→              </a>
+   219→   419→            </div>
+   220→   420→          </article>
+   221→   421→
+   222→   422→          <!-- 3. Bakala & Store Staff -->
+   223→   423→          <article class="service-card reveal" data-worker="bakala">
+   224→   424→            <div class="service-media">
+   225→   425→              <img data-img="service-store" data-i18n-img="img.serviceStore" width="640" height="400" loading="lazy" decoding="async"
+   226→   426→                   alt="Well-stocked convenience store shelves">
+   227→   427→              <span class="service-chip" aria-hidden="true">
+   228→   428→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 9h18l-1.5-5H5.5L3 9Zm0 0v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9M9 21v-6h6v6"/></svg>
+   229→   429→              </span>
+   230→   430→            </div>
+   231→   431→            <div class="service-body">
+   232→   432→              <h3 data-i18n="services.items.2.title">Bakala &amp; Store Staff</h3>
+   233→   433→              <p data-i18n="services.items.2.desc">Store keepers and helpers who keep shelves full, queues short and stock accurate.</p>
+   234→   434→              <ul>
+   235→   435→                <li data-i18n="services.items.2.li1">Shelf stocking &amp; facing</li>
+   236→   436→                <li data-i18n="services.items.2.li2">POS &amp; payments</li>
+   237→   437→                <li data-i18n="services.items.2.li3">Fresh food handling</li>
+   238→   438→              </ul>
+   239→   439→              <a href="#contact" class="service-link" data-worker="bakala">
+   240→   440→                <span data-i18n="services.request">Request this role</span>
+   241→   441→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   242→   442→              </a>
+   243→   443→            </div>
+   244→   444→          </article>
+   245→   445→
+   246→   446→          <!-- 4. Cashiers -->
+   247→   447→          <article class="service-card reveal" data-worker="cashier">
+   248→   448→            <div class="service-media">
+   249→   449→              <img data-img="service-cashier" data-i18n-img="img.serviceCashier" width="640" height="400" loading="lazy" decoding="async"
+   250→   450→                   alt="Cashier serving a customer at the counter">
+   251→   451→              <span class="service-chip" aria-hidden="true">
+   252→   452→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M7 16h10M15 12v4"/></svg>
+   253→   453→              </span>
+   254→   454→            </div>
+   255→   455→            <div class="service-body">
+   256→   456→              <h3 data-i18n="services.items.3.title">Cashiers</h3>
+   257→   457→              <p data-i18n="services.items.3.desc">Accurate, friendly cashiers for the pump island and the store — trained on your POS.</p>
+   258→   458→              <ul>
+   259→   459→                <li data-i18n="services.items.3.li1">POS &amp; payment terminals</li>
+   260→   460→                <li data-i18n="services.items.3.li2">Cash reconciliation</li>
+   261→   461→                <li data-i18n="services.items.3.li3">Upselling basics</li>
+   262→   462→              </ul>
+   263→   463→              <a href="#contact" class="service-link" data-worker="cashier">
+   264→   464→                <span data-i18n="services.request">Request this role</span>
+   265→   465→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   266→   466→              </a>
+   267→   467→            </div>
+   268→   468→          </article>
+   269→   469→
+   270→   470→          <!-- 5. Tire & Oil Change -->
+   271→   471→          <article class="service-card reveal" data-worker="tire">
+   272→   472→            <div class="service-media">
+   273→   473→              <img data-img="service-tire" data-i18n-img="img.serviceTire" width="640" height="400" loading="lazy" decoding="async"
+   274→   474→                   alt="Technician working on a wheel in the service bay">
+   275→   475→              <span class="service-chip" aria-hidden="true">
+   276→   476→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+   277→   477→              </span>
+   278→   478→            </div>
+   279→   479→            <div class="service-body">
+   280→   480→              <h3 data-i18n="services.items.4.title">Tire &amp; Oil Change</h3>
+   281→   481→              <p data-i18n="services.items.4.desc">Skilled technicians for quick lube and tire services — done right, every single time.</p>
+   282→   482→              <ul>
+   283→   483→                <li data-i18n="services.items.4.li1">Tire fitting &amp; rotation</li>
+   284→   484→                <li data-i18n="services.items.4.li2">Oil &amp; filter change</li>
+   285→   485→                <li data-i18n="services.items.4.li3">Basic safety inspection</li>
+   286→   486→              </ul>
+   287→   487→              <a href="#contact" class="service-link" data-worker="tire">
+   288→   488→                <span data-i18n="services.request">Request this role</span>
+   289→   489→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   290→   490→              </a>
+   291→   491→            </div>
+   292→   492→          </article>
+   293→   493→
+   294→   494→          <!-- 6. Supervisors & Cleaners -->
+   295→   495→          <article class="service-card reveal" data-worker="supervisor">
+   296→   496→            <div class="service-media">
+   297→   497→              <img data-img="service-team" data-i18n-img="img.serviceTeam" width="640" height="400" loading="lazy" decoding="async"
+   298→   498→                   alt="Station supervisor with the operations team">
+   299→   499→              <span class="service-chip" aria-hidden="true">
+   300→   500→                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+   301→   501→              </span>
+   302→   502→            </div>
+   303→   503→            <div class="service-body">
+   304→   504→              <h3 data-i18n="services.items.5.title">Supervisors &amp; Cleaners</h3>
+   305→   505→              <p data-i18n="services.items.5.desc">Shift supervisors who run the floor and cleaning crews who keep the whole site spotless.</p>
+   306→   506→              <ul>
+   307→   507→                <li data-i18n="services.items.5.li1">Shift supervision &amp; reporting</li>
+   308→   508→                <li data-i18n="services.items.5.li2">Forecourt &amp; restroom cleaning</li>
+   309→   509→                <li data-i18n="services.items.5.li3">HSE compliance checks</li>
+   310→   510→              </ul>
+   311→   511→              <a href="#contact" class="service-link" data-worker="supervisor">
+   312→   512→                <span data-i18n="services.request">Request this role</span>
+   313→   513→                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+   314→   514→              </a>
+   315→   515→            </div>
+   316→   516→          </article>
+   317→   517→        </div>
+   318→   518→
+   319→   519→        <p class="services-note reveal" data-i18n="services.note">
+   320→   520→          Need a role that's not listed? Talk to us — we recruit to specification.
+   321→   521→        </p>
+   322→   522→      </div>
+   323→   523→    </section>
+   324→   524→
+   325→   525→    <!-- ============================================================ -->
+   326→   526→    <!-- WHY CHOOSE US                                                 -->
+   327→   527→    <!-- ============================================================ -->
+   328→   528→    <section class="section why" id="why">
+   329→   529→      <div class="container">
+   330→   530→        <div class="section-head reveal">
+   331→   531→          <p class="eyebrow" data-i18n="why.eyebrow">Why Choose Us</p>
+   332→   532→          <h2 class="section-title" data-i18n="why.title">Station owners stay with us because</h2>
+   333→   533→          <p class="section-sub" data-i18n="why.sub">Predictable quality, honest pricing and a partner that answers the phone.</p>
+   334→   534→        </div>
+   335→   535→
+   336→   536→        <div class="why-grid reveal-group">
+   337→   537→          <div class="why-card reveal">
+   338→   538→            <span class="why-icon" aria-hidden="true">
+   339→   539→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+   340→   540→            </span>
+   341→   541→            <h3 data-i18n="why.items.0.title">Trained Workers</h3>
+   342→   542→            <p data-i18n="why.items.0.desc">Every candidate graduates our in-house station-skills program before deployment.</p>
+   343→   543→          </div>
+   344→   544→          <div class="why-card reveal">
+   345→   545→            <span class="why-icon" aria-hidden="true">
+   346→   546→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+   347→   547→            </span>
+   348→   548→            <h3 data-i18n="why.items.1.title">Fully Documented</h3>
+   349→   549→            <p data-i18n="why.items.1.desc">Visa, Iqama, medical and insurance — every worker arrives 100% legal and ready.</p>
+   350→   550→          </div>
+   351→   551→          <div class="why-card reveal">
+   352→   552→            <span class="why-icon" aria-hidden="true">
+   353→   553→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+   354→   554→            </span>
+   355→   555→            <h3 data-i18n="why.items.2.title">Fast Deployment</h3>
+   356→   556→            <p data-i18n="why.items.2.desc">Standard roles reach your station within 7–14 days of an approved request.</p>
+   357→   557→          </div>
+   358→   558→          <div class="why-card reveal">
+   359→   559→            <span class="why-icon" aria-hidden="true">
+   360→   560→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+   361→   561→            </span>
+   362→   562→            <h3 data-i18n="why.items.3.title">Transparent Pricing</h3>
+   363→   563→            <p data-i18n="why.items.3.desc">One clear monthly rate per worker. No hidden fees, no surprise invoices.</p>
+   364→   564→          </div>
+   365→   565→          <div class="why-card reveal">
+   366→   566→            <span class="why-icon" aria-hidden="true">
+   367→   567→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4c-1.4 0-2.8-.3-4-1L3 20l1.1-5.4a8.4 8.4 0 1 1 16.9-3.1Z"/><path d="M8 10h8M8 14h5"/></svg>
+   368→   568→            </span>
+   369→   569→            <h3 data-i18n="why.items.4.title">24/7 Bilingual Support</h3>
+   370→   570→            <p data-i18n="why.items.4.desc">Arabic, English and Bengali speaking coordinators on call around the clock.</p>
+   371→   571→          </div>
+   372→   572→          <div class="why-card reveal">
+   373→   573→            <span class="why-icon" aria-hidden="true">
+   374→   574→              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+   375→   575→            </span>
+   376→   576→            <h3 data-i18n="why.items.5.title">Safety First</h3>
+   377→   577→            <p data-i18n="why.items.5.desc">Fuel-handling, fire-safety and PPE training as a standard for every single role.</p>
+   378→   578→          </div>
+   379→   579→        </div>
+   380→   580→
+   381→   581→        <div class="guarantee-banner reveal">
+   382→   582→          <span class="gb-icon" aria-hidden="true">
+   383→   583→            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+   384→   584→          </span>
+   385→   585→          <div class="gb-text">
+   386→   586→            <h3 data-i18n="why.banner.title">72-Hour Replacement Guarantee</h3>
+   387→   587→            <p data-i18n="why.banner.desc">If any worker isn't the right fit, we replace them within 72 hours at no extra cost.</p>
+   388→   588→          </div>
+   389→   589→          <a href="#contact" class="btn btn-navy btn-sm" data-i18n="why.banner.cta">Start risk-free</a>
+   390→   590→        </div>
+   391→   591→      </div>
+   392→   592→    </section>
+   393→   593→
+   394→   594→    <!-- ============================================================ -->
+   395→   595→    <!-- HOW IT WORKS                                                  -->
+   396→   596→    <!-- ============================================================ -->
+   397→   597→    <section class="section process" id="process">
+   398→   598→      <div class="container">
+   399→   599→        <div class="section-head reveal">
+   400→   600→          <p class="eyebrow" data-i18n="process.eyebrow">How It Works</p>
+   401→   601→          <h2 class="section-title" data-i18n="process.title">From first call to full crew in four steps</h2>
+   402→   602→        </div>
+   403→   603→
+   404→   604→        <div class="process-track reveal-group">
+   405→   605→          <div class="step reveal">
+   406→   606→            <span class="step-num" aria-hidden="true">01</span>
+   407→   607→            <h3 data-i18n="process.steps.0.title">Tell Us Your Needs</h3>
+   408→   608→            <p data-i18n="process.steps.0.desc">Share the roles, headcount and city — by form, phone or WhatsApp.</p>
+   409→   609→            <span class="step-chip" data-i18n="process.steps.0.chip">Response within 24h</span>
+   410→   610→          </div>
+   411→   611→          <div class="step reveal">
+   412→   612→            <span class="step-num" aria-hidden="true">02</span>
+   413→   613→            <h3 data-i18n="process.steps.1.title">Shortlist &amp; Select</h3>
+   414→   614→            <p data-i18n="process.steps.1.desc">Receive vetted CVs and interview candidates you like.</p>
+   415→   615→            <span class="step-chip" data-i18n="process.steps.1.chip">Shortlist in 3–5 days</span>
+   416→   616→          </div>
+   417→   617→          <div class="step reveal">
+   418→   618→            <span class="step-num" aria-hidden="true">03</span>
+   419→   619→            <h3 data-i18n="process.steps.2.title">We Deploy</h3>
+   420→   620→            <p data-i18n="process.steps.2.desc">Documents, uniforms and onboarding handled — workers arrive station-ready.</p>
+   421→   621→            <span class="step-chip" data-i18n="process.steps.2.chip">On site in 7–14 days</span>
+   422→   622→          </div>
+   423→   623→          <div class="step reveal">
+   424→   624→            <span class="step-num" aria-hidden="true">04</span>
+   425→   625→            <h3 data-i18n="process.steps.3.title">Ongoing Support</h3>
+   426→   626→            <p data-i18n="process.steps.3.desc">Supervision visits, performance reporting and instant replacements.</p>
+   427→   627→            <span class="step-chip" data-i18n="process.steps.3.chip">24/7 hotline</span>
+   428→   628→          </div>
+   429→   629→        </div>
+   430→   630→      </div>
+   431→   631→    </section>
+   432→   632→
+   433→   633→    <!-- ============================================================ -->
+   434→   634→    <!-- STATS BAND (navy contrast)                                    -->
+   435→   635→    <!-- ============================================================ -->
+   436→   636→    <section class="stats" id="stats" aria-label="Company statistics">
+   437→   637→      <div class="container">
+   438→   638→        <p class="stats-chip reveal" data-i18n="stats.chip">Serving the Kingdom since 2014</p>
+   439→   639→        <div class="stats-grid reveal-group">
+   440→   640→          <div class="stat reveal">
+   441→   641→            <span class="stat-value"><span class="counter" data-count="500">0</span>+</span>
+   442→   642→            <span class="stat-label" data-i18n="stats.s1">Workers deployed</span>
+   443→   643→          </div>
+   444→   644→          <div class="stat reveal">
+   445→   645→            <span class="stat-value"><span class="counter" data-count="120">0</span>+</span>
+   446→   646→            <span class="stat-label" data-i18n="stats.s2">Stations served</span>
+   447→   647→          </div>
+   448→   648→          <div class="stat reveal">
+   449→   649→            <span class="stat-value"><span class="counter" data-count="10">0</span>+</span>
+   450→   650→            <span class="stat-label" data-i18n="stats.s3">Years in operation</span>
+   451→
+   452→[showing lines 201-650 of 1050; use offset=651 with limit to continue reading]
