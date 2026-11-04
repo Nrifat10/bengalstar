@@ -1,5 +1,5 @@
 /* ============================================================================
-   Bangla Star Co., Ltd — Image manager
+   Bengal Star Limited Company — Image manager
    ----------------------------------------------------------------------------
    ALL site images live in the single IMAGES array below so they are easy to
    replace. Each entry has:
@@ -121,7 +121,7 @@ const FALLBACK_SVG =
   '  <g>' +
   '    <path d="M800 300 L813 332.6 L848 333.4 L821 355.4 L830.5 389 L800 369.6 L769.5 389 L779 355.4 L752 333.4 L787 332.6 Z" fill="#D4A017"/>' +
   '  </g>' +
-  '  <text x="800" y="480" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#0E1F3D" text-anchor="middle">Bangla Star</text>' +
+  '  <text x="800" y="480" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#0E1F3D" text-anchor="middle">Bengal Star</text>' +
   '  <text x="800" y="532" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#5C6A85" text-anchor="middle">Manpower for Petrol Stations</text>' +
   '</svg>';
 

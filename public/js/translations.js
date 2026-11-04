@@ -1,5 +1,5 @@
 /* ============================================================================
-   Bangla Star Co., Ltd — Translations (EN / AR)
+   Bengal Star Limited Company — Translations (EN / AR)
    ----------------------------------------------------------------------------
    Every visible string lives here. Strings are applied to the page through
    data-i18n / data-i18n-placeholder / data-i18n-aria / data-i18n-img
@@ -13,8 +13,8 @@ const TRANSLATIONS = {
   /* ============================ ENGLISH ============================ */
   en: {
     meta: {
-      title: "Bangla Star Co., Ltd | Manpower Supply for Petrol Stations in Saudi Arabia",
-      description: "Bangla Star Co., Ltd supplies trained, fully-documented workers to petrol stations across Saudi Arabia — fuel attendants, car wash staff, bakala/store workers, cashiers, tire & oil change technicians, supervisors and cleaners. 72-hour replacement guarantee."
+      title: "Bengal Star Limited Company | Manpower Supply for Petrol Stations in Saudi Arabia",
+      description: "Bengal Star Limited Company supplies trained, fully-documented workers to petrol stations across Saudi Arabia — fuel attendants, car wash staff, bakala/store workers, cashiers, tire & oil change technicians, supervisors and cleaners. 72-hour replacement guarantee."
     },
 
     skip: "Skip to main content",
@@ -65,9 +65,9 @@ const TRANSLATIONS = {
     },
 
     about: {
-      eyebrow: "About Bangla Star",
+      eyebrow: "About Bengal Star",
       title: "The workforce behind the Kingdom's busiest stations",
-      p1: "Bangla Star Co., Ltd is a specialist manpower supply company headquartered in Riyadh. Since 2014 we have recruited, trained and deployed thousands of workers for petrol stations, fuel retail networks and highway service centers across Saudi Arabia.",
+      p1: "Bengal Star Limited Company is a specialist manpower supply company headquartered in Riyadh. Since 2014 we have recruited, trained and deployed thousands of workers for petrol stations, fuel retail networks and highway service centers across Saudi Arabia.",
       p2: "Every candidate passes our in-house training program before reaching your forecourt — pump operation, customer service, POS systems and health & safety. You get station-ready staff from day one, with all documents handled end-to-end.",
       point1: "Licensed & fully compliant recruitment",
       point2: "Visa, Iqama, medical & insurance handled",
@@ -212,17 +212,17 @@ const TRANSLATIONS = {
       sub: "Fill the form and our team responds within one business day — or reach us instantly on WhatsApp.",
       infoTitle: "Get in touch",
       addressLabel: "Head Office",
-      address: "Office 12, Business District, Riyadh, Saudi Arabia",
+      address: "3046 Al Imam Faisal Ibn Turki Ibn Abdallah, Al Futah, Riyadh 12632, Saudi Arabia",
       phoneLabel: "Phone",
-      phone: "+966 5X XXX XXXX",
+      phone: "+966 55 107 4694",
       emailLabel: "Email",
-      email: "info@banglastar.com",
+      email: "info@bengalstarltd.com",
       hoursLabel: "Working Hours",
       hours: "24/7 — operations & support",
       wa: "Message on WhatsApp",
       fallback: "Prefer to talk? We reply within minutes during working hours.",
-      whatsappMsg: "Hello Bangla Star, I'd like to ask about staffing for our station.",
-      mapTitle: "Bangla Star head office location in Riyadh",
+      whatsappMsg: "Hello Bengal Star, I'd like to ask about staffing for our station.",
+      mapTitle: "Bengal Star head office location in Riyadh",
       form: {
         name: "Full Name *",
         namePh: "Your name",
@@ -260,8 +260,9 @@ const TRANSLATIONS = {
       services: "Our Workers",
       contact: "Contact",
       rights: "©",
-      company: "Bangla Star Co., Ltd",
+      company: "Bengal Star Limited Company",
       rights2: "— All rights reserved.",
+      crLabel: "CR No.",
       made: "Recruitment & manpower services · Kingdom of Saudi Arabia"
     },
 
@@ -274,13 +275,13 @@ const TRANSLATIONS = {
     },
 
     img: {
-      logo: "Bangla Star Co., Ltd logo",
+      logo: "Bengal Star Limited Company logo",
       hero1: "Modern Go fuel station with curved canopy in Saudi Arabia",
       hero2: "Fuel attendants in uniform serving customers at a LITER station",
       hero3: "WEAL petrol station forecourt with convenience store",
       hero4: "Grand opening of an ENOC petrol station with staff",
       hero5: "JIOIL fuel station with price pylon sign in Saudi Arabia",
-      aboutMain: "Bangla Star management team at a client station in Riyadh",
+      aboutMain: "Bengal Star management team at a client station in Riyadh",
       aboutTeam: "Client station forecourt",
       serviceFuel: "Fuel attendant refuelling a customer's car",
       serviceCarwash: "Car wash worker spraying foam on a vehicle",
@@ -294,8 +295,8 @@ const TRANSLATIONS = {
   /* ============================ ARABIC ============================ */
   ar: {
     meta: {
-      title: "شركة بنجلا ستار المحدودة | إمداد العمالة لمحطات الوقود في المملكة العربية السعودية",
-      description: "تزوّد شركة بنجلا ستار المحدودة محطات الوقود في جميع أنحاء المملكة العربية السعودية بعمالة مدربة وموثّقة بالكامل — ملّاك وقود، فرق غسيل سيارات، عمال باقالة ومتاجر، أمناء صندوق، فنيو إطارات وتغيير زيت، مشرفون وعمال نظافة. مع ضمان استبدال خلال 72 ساعة."
+      title: "شركة بينجال ستار اليمنيتد | إمداد العمالة لمحطات الوقود في المملكة العربية السعودية",
+      description: "تزوّد شركة بينجال ستار اليمنيتد محطات الوقود في جميع أنحاء المملكة العربية السعودية بعمالة مدربة وموثّقة بالكامل — ملّاك وقود، فرق غسيل سيارات، عمال باقالة ومتاجر، أمناء صندوق، فنيو إطارات وتغيير زيت، مشرفون وعمال نظافة. مع ضمان استبدال خلال 72 ساعة."
     },
 
     skip: "تخطَّ إلى المحتوى الرئيسي",
@@ -346,9 +347,9 @@ const TRANSLATIONS = {
     },
 
     about: {
-      eyebrow: "عن بنجلا ستار",
+      eyebrow: "عن بينجال ستار",
       title: "القوة العاملة خلف أكثر محطات المملكة انشغالاً",
-      p1: "شركة بنجلا ستار المحدودة شركة متخصصة في إمداد العمالة ومقرها الرياض. منذ عام 2014 نقوم باستقطاب وتدريب ونشر آلاف العمال لمحطات الوقود وشبكات تجزئة الوقود ومراكز الخدمة على الطرق السريعة في جميع أنحاء المملكة العربية السعودية.",
+      p1: "شركة بينجال ستار اليمنيتد شركة متخصصة في إمداد العمالة ومقرها الرياض. منذ عام 2014 نقوم باستقطاب وتدريب ونشر آلاف العمال لمحطات الوقود وشبكات تجزئة الوقود ومراكز الخدمة على الطرق السريعة في جميع أنحاء المملكة العربية السعودية.",
       p2: "كل مرشح يجتاز برنامجنا التدريبي الداخلي قبل وصوله إلى محطتكم — تشغيل المضخات وخدمة العملاء وأنظمة نقاط البيع والصحة والسلامة. تحصلون على عمالة جاهزة للمحطة من اليوم الأول، مع إنجاز جميع المعاملات من البداية إلى النهاية.",
       point1: "استقدام مرخّص ومتوافق تماماً",
       point2: "تأشيرة وإقامة وفحص طبي وتأمين — نتولى كل شيء",
@@ -493,17 +494,17 @@ const TRANSLATIONS = {
       sub: "املأ النموذج وسيرد فريقنا خلال يوم عمل واحد — أو تواصل معنا فوراً عبر واتساب.",
       infoTitle: "معلومات التواصل",
       addressLabel: "المكتب الرئيسي",
-      address: "مكتب 12، الحي التجاري، الرياض، المملكة العربية السعودية",
+      address: "3046 الإمام فيصل بن تركي بن عبدالله، الفوطة، الرياض 12632، المملكة العربية السعودية",
       phoneLabel: "الهاتف",
-      phone: "+966 5X XXX XXXX",
+      phone: "+966 55 107 4694",
       emailLabel: "البريد الإلكتروني",
-      email: "info@banglastar.com",
+      email: "info@bengalstarltd.com",
       hoursLabel: "ساعات العمل",
       hours: "24/7 — العمليات والدعم",
       wa: "راسلنا عبر واتساب",
       fallback: "تفضّل التحدث؟ نرد خلال دقائق في ساعات العمل.",
-      whatsappMsg: "مرحباً بنجلا ستار، أرغب في الاستفسار عن توظيف عمالة لمحطتنا.",
-      mapTitle: "موقع المكتب الرئيسي لشركة بنجلا ستار في الرياض",
+      whatsappMsg: "مرحباً بينجال ستار، أرغب في الاستفسار عن توظيف عمالة لمحطتنا.",
+      mapTitle: "موقع المكتب الرئيسي لشركة بينجال ستار في الرياض",
       form: {
         name: "الاسم الكامل *",
         namePh: "اسمك",
@@ -541,8 +542,9 @@ const TRANSLATIONS = {
       services: "عمالتنا",
       contact: "تواصل",
       rights: "©",
-      company: "شركة بنجلا ستار المحدودة",
+      company: "شركة بينجال ستار اليمنيتد",
       rights2: "— جميع الحقوق محفوظة.",
+      crLabel: "س.ت",
       made: "خدمات استقدام وعمالة · المملكة العربية السعودية"
     },
 
@@ -555,13 +557,13 @@ const TRANSLATIONS = {
     },
 
     img: {
-      logo: "شعار شركة بنجلا ستار المحدودة",
+      logo: "شعار شركة بينجال ستار اليمنيتد",
       hero1: "محطة وقود Go حديثة بمظلة منحنية في السعودية",
       hero2: "مناوبو وقود بالزي الرسمي يخدمون العملاء في محطة ليتر",
       hero3: "ساحة محطة وقود WEAL مع متجر للتجزئة",
       hero4: "افتتاح محطة وقود ENOC بحضور فريق العمل",
       hero5: "محطة وقود JIOIL مع لوحة أسعار في السعودية",
-      aboutMain: "فريق إدارة بنجلا ستار في محطة عميل بالرياض",
+      aboutMain: "فريق إدارة بينجال ستار في محطة عميل بالرياض",
       aboutTeam: "ساحة محطة عميل",
       serviceFuel: "ملّاك وقود يخدمون سيارة عميل",
       serviceCarwash: "عامل غسيل يرشّ الرغوة على مركبة",

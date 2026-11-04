@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.banglastar.com/sitemap.xml
+Sitemap: https://bengalstarltd.com/sitemap.xml

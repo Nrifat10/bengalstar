@@ -1,5 +1,5 @@
 /* ============================================================================
-   Bangla Star Co., Ltd — Main script
+   Bengal Star Limited Company — Main script
    ----------------------------------------------------------------------------
    Handles: images + fallbacks, EN/AR i18n with RTL, sticky navbar, mobile
    menu, hero image-card & testimonial sliders (autoplay, dots, swipe, pause),
@@ -17,12 +17,12 @@
     /* Formspree form ID (create a free form at https://formspree.io) */
     formspreeId: "YOUR_FORM_ID",
 
-    /* WhatsApp number in international format, digits only (e.g. 9665XXXXXXXX) */
-    whatsappNumber: "9665XXXXXXXX",
+    /* WhatsApp number in international format, digits only (from official letterhead) */
+    whatsappNumber: "966551074694",
 
-    /* Phone / email used for tel: and mailto: links */
-    phoneHref: "+9665XXXXXXXXXX",
-    email: "info@banglastar.com"
+    /* Phone / email used for tel: and mailto: links (from official letterhead) */
+    phoneHref: "+966551074694",
+    email: "info@bengalstarltd.com"
   };
 
   /* --------------------------------------------------------------------------
@@ -531,7 +531,7 @@
         workerType: form.workerType.value,
         message: form.message.value.trim(),
         _language: currentLang,
-        _subject: "New worker request — banglastar.com"
+        _subject: "New worker request — bengalstarltd.com"
       };
 
       /* Endpoint from the configured Formspree ID */

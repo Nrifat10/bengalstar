@@ -1,7 +1,7 @@
-# Bangla Star Co., Ltd — Website
+# Bengal Star Limited Company — Website
 
 A modern, fully responsive, **pure static** website (no build step, no frameworks, no npm)
-for **Bangla Star Co., Ltd** — manpower supply for petrol stations in Saudi Arabia.
+for **Bengal Star Limited Company** — manpower supply for petrol stations in Saudi Arabia.
 
 **Design:** Premium light theme — white / cool-light surfaces, ink-navy `#0E1F3D`,
 brand navy `#16305E` and gold `#D4A017` accents, soft shadows, rounded photo cards.
@@ -72,20 +72,30 @@ Then attach your custom domain in **Project → Settings → Domains**
 
 ---
 
-## ✏️ Placeholders to replace before going live
+## ✏️ Placeholders — what's real now vs. still to replace
+
+Real company details (from the official letterhead, 2025-11-04):
+
+| # | What | Status |
+|---|------|--------|
+| 1 | **WhatsApp / Phone** | ✅ Real — `+966 55 107 4694` (`js/main.js` `SITE_CONFIG`, all `wa.me`/`tel:` links) |
+| 2 | **Email address** | ✅ Real — `info@bengalstarltd.com` (`js/main.js`, JSON-LD, `mailto:` links, translations) |
+| 3 | **Office address** | ✅ Real — `3046 Al Imam Faisal Ibn Turki Ibn Abdallah, Al Futah, Riyadh 12632` (EN + AR, JSON-LD) |
+| 4 | **CR number** | ✅ Real — `7054465963` (footer + JSON-LD `identifier`) |
+| 5 | **Company name** | ✅ Real — `Bengal Star Limited Company` / `شركة بينجال ستار اليمنيتد` (title, meta, JSON-LD, footer, translations) |
+| 6 | **Domain name** | ✅ Real — `https://bengalstarltd.com` (canonical, hreflang, OG, Twitter, JSON-LD, `robots.txt`, `sitemap.xml`) |
+| 7 | **Google Maps embed** | ✅ Real — map pinned to the head-office address |
+| 8 | **Images** | ✅ Client's own station photos (hero slider + About) |
+
+Still placeholder (replace when available):
 
 | # | What | Where | Current placeholder |
 |---|------|-------|---------------------|
-| 1 | **WhatsApp number** | `js/main.js` → `SITE_CONFIG.whatsappNumber` **and** every `https://wa.me/9665XXXXXXXX` link in `index.html` | `9665XXXXXXXX` |
-| 2 | **Phone number** | `js/main.js` → `SITE_CONFIG.phoneHref` **and** `index.html` (`tel:+9665XXXXXXXXXX`, JSON-LD `telephone`) **and** display strings in `js/translations.js` (`contact.phone`) | `+966 5X XXX XXXX` |
-| 3 | **Email address** | `js/main.js` → `SITE_CONFIG.email`, `index.html` (JSON-LD + `mailto:`), `js/translations.js` (`contact.email`) | `info@banglastar.com` |
-| 4 | **Office address** | `js/translations.js` → `contact.address` (EN + AR), `index.html` JSON-LD `address` | `Office 12, Business District, Riyadh` |
-| 5 | **Formspree form ID** | `js/main.js` → `SITE_CONFIG.formspreeId` **and** the `<form action="…">` in `index.html` | `YOUR_FORM_ID` |
-| 6 | **Domain name** | `index.html` (canonical, hreflang, OG, Twitter, JSON-LD), `robots.txt`, `sitemap.xml` | `https://www.banglastar.com` |
-| 7 | **Google Maps embed** | `index.html` → `.map-embed` iframe `src` | Generic Riyadh map |
-| 8 | **Social links** | `index.html` footer + JSON-LD `sameAs` | `banglastar` handles |
-| 9 | **Stats & testimonials** | `index.html` (`.counter` values + testimonial texts in `js/translations.js`) | Sample numbers/reviews |
-| 10 | **Images** | `js/images.js` → the single `IMAGES` array | Curated stock photos |
+| 9 | **Formspree form ID** | `js/main.js` → `SITE_CONFIG.formspreeId` **and** the `<form action="…">` in `index.html` | `YOUR_FORM_ID` |
+| 10 | **Stats & testimonials** | `index.html` (`.counter` values + testimonial texts in `js/translations.js`) | Sample numbers/reviews |
+
+> Social links were removed (footer + JSON-LD `sameAs`) — the company has no
+> official social profiles yet. Re-add them when profiles exist.
 
 > **Formspree quick setup:** create a free form at
 > [formspree.io](https://formspree.io) → copy your form ID (looks like `xyzabcd`) →

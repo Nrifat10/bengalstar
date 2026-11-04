@@ -271,3 +271,35 @@ Verification (agent-browser + VLM):
 Files changed: static-site/{index.html, js/images.js, js/translations.js} + mirrors; +6×2 image files (station-go/liter/weal/enoc/jioil/forecourt.png in static-site/images/ & public/images/).
 
 Stage Summary: Client's own station photos now power the site's most prominent imagery — hero slider (5 slides: Go, LITER w/ working attendants, WEAL, ENOC opening, JIOIL) + About collage small photo (ENOC forecourt). SASCO upload rejected for Shutterstock watermark; informed user in chat.
+
+## 11-v1 — Task 11: Apply official company info from letterhead PDF
+
+Task: User uploaded the official company letterhead ("info aca ekhana sob" = all the info is here). Extract everything and update the site.
+
+Extraction (PDF has no text layer → PyMuPDF render 1530×1980 → VLM, 4 passes incl. zoomed crops of top/bottom strips):
+- Company: Bengal Star Limited Company / شركة بينجال ستار اليمنيتد (Arabic transliteration of "Limited" — VLM readings varied between اليمنيد/اليمنيتد/إيمتد; went with the full-page reading)
+- Address: 3046 Al Imam Faisal Ibn Turki Ibn Abdallah, Al Futah, Riyadh 12632, KSA (AR: 3046 الإمام فيصل بن تركي بن عبدالله، الفوطة، الرياض 12632)
+- Mobile/WhatsApp: +966 55 107 4694
+- Email: info@bengalstarltd.com
+- Web: bengalstarltd.com
+- CR: 7054465963
+- Logo on letterhead matches the previously integrated logo; no social media, no VAT no.
+
+Changes:
+- index.html: full rename "Bangla Star Co., Ltd" → "Bengal Star Limited Company" (title, meta desc, author, OG/Twitter cards, brand aria-labels + alts, about copy, footer.company); canonical/hreflang/OG/JSON-LD url https://bengalstarltd.com/; og:image + twitter:image → /images/station-weal.png (1280×720); JSON-LD rewritten with real name/alternateName/telephone/email/address (street + postal 12632)/identifier CR 7054465963/image → station-go.png, fake sameAs socials REMOVED; all 4 wa.me links → 966551074694; 2 tel: links + display → +966 55 107 4694; 2 mailto: + display → info@bengalstarltd.com; 2 address strings → real address; map iframe → address-pinned embed (maps.google.com/maps?q=...&output=embed); footer-bottom 2nd line → "CR No. 7054465963 · bengalstarltd.com" (new i18n key footer.crLabel); dead "#" social icon blocks removed (footer + contact aside).
+- js/main.js: SITE_CONFIG whatsappNumber/phoneHref → 966551074694 / +966551074694, email → info@bengalstarltd.com; _subject → bengalstarltd.com.
+- js/translations.js: EN+AR meta.title/description, about.eyebrow/p1, contact.address/phone/email, whatsappMsg, mapTitle, footer.company, img.logo/aboutMain all renamed to real data; added footer.crLabel (EN "CR No." / AR "س.ت").
+- js/images.js: FALLBACK_SVG text → "Bengal Star". sitemap.xml + robots.txt → bengalstarltd.com. README.md: placeholder table rewritten (8 items ✅ real, 2 remaining: Formspree ID + sample stats/testimonials).
+- Header comments updated in main.js/translations.js/images.js/style.css.
+- All mirrored to public/ (diff MATCH ×6).
+
+Verification (agent-browser):
+- EN: title "Bengal Star Limited Company | ...", wa.me/966551074694?text=Hello Bengal Star (SITE_CONFIG-driven), tel:+966551074694 "+966 55 107 4694", mailto:info@bengalstarltd.com, footer CR line "CR No. 7054465963 · bengalstarltd.com", full address in contact + footer, 0 social blocks.
+- AR RTL: title/company شركة بينجال ستار اليمنيتد, AR address, س.ت 7054465963, AR WhatsApp prefilled msg. VLM: correct glyph shaping + bidi (phone/email LTR-in-RTL correct).
+- Footer: logo white card, real contact column, no socials. (VLM "© 2026" flag = dynamic footerYear via JS — correct behavior; floating WA button overlap = by-design fixed CTA.)
+- Contact card VLM address "clipping" + phone digit transposition = screenshot/reading artifacts (DOM-verified exact strings; scroll-margin-top 88px already handles sticky-nav anchors).
+- Mobile 390: no horizontal overflow, address wraps cleanly, no page errors.
+
+Files changed: index.html, js/main.js, js/translations.js, js/images.js, css/style.css (comment), sitemap.xml, robots.txt, README.md + all public/ mirrors.
+
+Stage Summary: Site now carries the official letterhead identity everywhere — company name (Bengal Star Limited Company / شركة بينجال ستار اليمنيتد), real Riyadh address with map pin, +966 55 107 4694 (tel + WhatsApp + form), info@bengalstarltd.com, CR 7054465963 in footer + JSON-LD, bengalstarltd.com domain refs. Fake socials removed. Remaining placeholders: Formspree form ID (form currently guides users to WhatsApp) and sample stats/testimonials.
