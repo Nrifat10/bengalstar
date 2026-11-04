@@ -55,6 +55,7 @@ export function ContactPage() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [waLink, setWaLink] = useState<string | null>(null);
 
   const set = (key: keyof FormState) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -83,10 +84,11 @@ export function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, lang }),
       });
-      const data = (await res.json()) as { ok?: boolean };
+      const data = (await res.json()) as { ok?: boolean; whatsapp?: string };
       if (!res.ok || !data.ok) throw new Error("request_failed");
       setSent(true);
       setForm(EMPTY_FORM);
+      setWaLink(typeof data.whatsapp === "string" ? data.whatsapp : null);
       toast({
         title: t.contact.form.success,
         description: t.contact.form.note,
@@ -159,10 +161,28 @@ export function ContactPage() {
                     <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
                       {t.contact.form.note}
                     </p>
+                    {waLink && (
+                      <Button
+                        asChild
+                        className="mt-6 h-12 rounded-full bg-[#25D366] px-8 text-sm font-semibold text-white shadow-md shadow-[#25D366]/30 hover:bg-[#1fb859]"
+                      >
+                        <a
+                          href={waLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
+                          {t.contact.wa}
+                        </a>
+                      </Button>
+                    )}
                     <Button
                       variant="outline"
                       className="mt-8 h-11 rounded-full border-gold/50 px-6 text-sm font-semibold text-gold-3 hover:bg-gold-soft"
-                      onClick={() => setSent(false)}
+                      onClick={() => {
+                        setSent(false);
+                        setWaLink(null);
+                      }}
                     >
                       {t.contact.form.submit}
                     </Button>

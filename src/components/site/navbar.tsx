@@ -58,6 +58,10 @@ type NavDict = {
   contact: string; contactDesc: string;
   groupCompany: string; groupCompanyDesc: string;
   groupSolutions: string; groupSolutionsDesc: string;
+  cta: string;
+  toggleAria: string;
+  openMenuAria: string;
+  closeMenuAria: string;
 };
 
 const ROUTE_META: Record<Route, NavLeaf> = {

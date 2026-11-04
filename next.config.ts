@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* config options here */
+  /* Vercel-friendly: no standalone output (Vercel uses its own Next.js runtime) */
   typescript: {
-    ignoreBuildErrors: true,
+    /* Type-checks are clean (tsc --noEmit passes). Fail the build on type
+       errors so problems surface at build time, not in production. */
+    ignoreBuildErrors: false,
   },
   reactStrictMode: false,
 };
