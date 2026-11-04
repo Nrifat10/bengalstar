@@ -184,3 +184,34 @@ Stage Summary:
   * (f) Mobile 390×844: header logo 36px aspect-true, footer chip 78px, marquee intact, scrollWidth==clientWidth==390 (no horizontal overflow).
   * (g) dev.log clean apart from the pre-existing EADDRINUSE artifact and one transitional 404 for the deleted old logo.png (stale external client; live page never requests it).
 - style.css untouched: /static-site/css/style.css and /public/css/style.css remain byte-identical (no defect → no fix).
+
+---
+
+## 8-v1 — Task 8-a: Add 7 new client logos to hero brand slider (2026-11-04)
+Task ID: 8-a
+Agent: general-purpose (sub agent — integrate 7 newly uploaded client logos into the hero brand marquee)
+Task: User uploaded 7 new logo files to /home/z/my-project/upload/ ("company slide e egulao add koro" = add these to the company slider too). Identify each brand via VLM, copy them under semantic names, extend the marquee from 6 to 13 brands, keep the seamless -50% loop intact, and mirror everything to public/.
+
+Work Log:
+- Read worklog for context (Tasks 1-7, 7-v1, 8-v1): marquee = 12 .brand-tile (6 brands ×2, no dup class), .marquee-track animation marquee 38s, @keyframes translateX(-50%); .brand-tile 76px fixed-height card with object-fit:contain.
+- Step 1 — VLM identification (z-ai vision -p "..." -i <file> -o /tmp/vlm_logoN.json, parsed via python3 choices[0].message.content; PIL for dimensions/alpha):
+  1. pasted_image_1793779575144.png → Gulf (Gulf Oil) — classic orange disc + dark-blue "Gulf" on white band; 404×331 RGB, solid white bg, rounded-square app-style frame. → images/brand-gulf.png (alt "Gulf")
+  2. pasted_image_1793779583729.png → Petrolat (بترولات / "Road Solutions" حلول الطرق) — black text on solid yellow rounded rect; 466×257 RGB, solid bg. → images/brand-petrolat.png (alt "Petrolat")
+  3. pasted_image_1793779620108.png → GoStation (go station — EV charging network) — orange "go" + navy "station" + leopard emblem; 1927×484 RGBA transparent. → images/brand-gostation.png (alt "GoStation")
+  4. pasted_image_1793779659170.png → Benzene (بنزين) — teal/violet hexagonal benzene-ring emblem, Arabic teal + English violet wordmark; 159×195 RGB, solid white bg. → images/brand-benzene.png (alt "Benzene")
+  5. pasted_image_1793779721356.png → SASREF (سسف — Saudi Arabian-Spanish Refining Co., Jubail) — orange+purple pinwheel mark; 400×400 RGB, solid white bg. → images/brand-sasref.png (alt "SASREF")
+  6. pasted_image_1793779758977.png → ALYAT (العــيــات) — yellow/amber oil droplet in green chevron + green "ALYAT"; 1238×398 RGBA transparent. → images/brand-alyat.png (alt "ALYAT")
+  7. pasted_image_1793779821147.png → OKTEN (اوكتين) — teal circular swoosh/slash accents + navy wordmark; 1194×402 RGBA transparent. → images/brand-okten.png (alt "OKTEN")
+  - Duplicate check: no slug collisions with existing naft/sasco/adnoc/weol/petroly/aldrees. Apparent near-duplicate "Petrolat" vs existing "PETROLY" disproven by VLM side-by-side: PETROLY = red/blue horse emblem, black bg, English only; Petrolat = yellow bg, Arabic + "Road Solutions" — distinct brands, both kept. Not all 7 are classic fuel stations (Petrolat = road solutions, GoStation = EV charging, SASREF = refining) but all are energy/fuel-sector clients — added as requested.
+- Step 2 — Copied each upload to static-site/images/brand-{slug}.png AND public/images/brand-{slug}.png (cmp: all 7 byte-identical across mirrors).
+- Step 3 — static-site/index.html marquee-track rewritten: first set = 13 tiles (6 existing + 7 new, upload order gulf/petrolat/gostation/benzene/sasref/alyat/okten), second set = EXACT copy of all 13 with class "brand-tile dup" (26 tiles total; same order/sizes/srcs/alts for the seamless loop). HTML comment above it updated. Programmatic check: first half == second half (src+alt, same order) = True; dup class only on second half = True.
+- Step 4 — css/style.css: .marquee-track animation 38s → 82s (38 × 13/6 ≈ 82 keeps linear speed consistent, comment added); in @media (prefers-reduced-motion: reduce) added `.marquee-track .dup { display: none; }` so reduced-motion users see each of the 13 logos once.
+- Step 5 — Mirrored index.html + style.css to public/ (diff -q: both MATCH; images already mirrored in Step 2).
+- Step 6 — Route verification (dev server :3000, not started by me): brand-gulf/petrolat/gostation/benzene/sasref/alyat/okten .png → ALL 200; /index.html → 200; each new brand filename appears exactly 2× in served HTML; served /index.html contains 26 .brand-tile spans; served /css/style.css line 812 = "animation: marquee 82s linear infinite", line 1920 = ".marquee-track .dup { display: none; }". Root "/" is the Next.js shell with <iframe src="/index.html"> → live content confirmed updated.
+- Files changed: static-site/index.html, static-site/css/style.css, public/index.html, public/css/style.css, + 7 × 2 new image files (static-site/images/ & public/images/: brand-gulf, brand-petrolat, brand-gostation, brand-benzene, brand-sasref, brand-alyat, brand-okten).
+
+Stage Summary:
+- 7 new logos identified (Gulf, Petrolat, GoStation, Benzene, SASREF, ALYAT, OKTEN), copied under semantic names to both image dirs, and integrated into the hero marquee: 13 unique tiles + 13 exact "dup" copies = 26 tiles, seamless -50% loop preserved with duration scaled 38s → 82s.
+- Reduced-motion users now see each logo exactly once (.dup display:none).
+- All HTTP checks 200; mirrors byte-identical. No collisions/duplicates with the existing 6 brands (Petrolat ≠ PETROLY verified via VLM).
+- Open follow-up (for a browser-verification task): confirm all 13 logos render undistorted at 76px tile height (4 uploads have solid backgrounds — Gulf/Petrolat/Benzene/SASREF — which sit in the white brand-tile cards; 3 are transparent PNGs), and that the slower 82s loop still animates smoothly on desktop + mobile + AR/RTL.

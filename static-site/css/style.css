@@ -807,7 +807,9 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee 38s linear infinite;
+  /* 13 brands per half (was 6) — duration scaled 38s × 13/6 ≈ 82s to keep
+     the same linear scroll speed for the seamless -50% translate loop. */
+  animation: marquee 82s linear infinite;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -1914,6 +1916,8 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   }
   .reveal { opacity: 1; transform: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  /* Duplicate set hidden so reduced-motion users see each of the 13 logos once. */
+  .marquee-track .dup { display: none; }
 }
 
 @media print {
