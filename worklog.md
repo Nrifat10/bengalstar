@@ -303,3 +303,20 @@ Verification (agent-browser):
 Files changed: index.html, js/main.js, js/translations.js, js/images.js, css/style.css (comment), sitemap.xml, robots.txt, README.md + all public/ mirrors.
 
 Stage Summary: Site now carries the official letterhead identity everywhere — company name (Bengal Star Limited Company / شركة بينجال ستار اليمنيتد), real Riyadh address with map pin, +966 55 107 4694 (tel + WhatsApp + form), info@bengalstarltd.com, CR 7054465963 in footer + JSON-LD, bengalstarltd.com domain refs. Fake socials removed. Remaining placeholders: Formspree form ID (form currently guides users to WhatsApp) and sample stats/testimonials.
+
+---
+
+## 12-v1 — Task 12: Domain switch bengalstarltd.com → bengalstar.sa (2026-11-07)
+
+Client acquired the new domain **bengalstar.sa**. All site-level URLs switched; email intentionally kept on the old domain until a mailbox on the new one is confirmed.
+
+- src/app/layout.tsx: metadataBase → https://bengalstar.sa (single canonical host, www dropped).
+- src/app/api/requests/route.ts + public/js/main.js: form fallback WhatsApp message subject → "New worker request — bengalstar.sa".
+- public/index.html: canonical, hreflang (en/ar/x-default), og:url, og:image, twitter:image, JSON-LD url/logo/image → https://bengalstar.sa; footer CR line → "CR No. 7054465963 · bengalstar.sa".
+- public/sitemap.xml + public/robots.txt → bengalstar.sa.
+- README.md + public/README.md: custom-domain instructions → bengalstar.sa + www.bengalstar.sa.
+- Email unchanged: info@bengalstarltd.com (mailto links, SITE_CONFIG, i18n, JSON-LD, translations) — flip to info@bengalstar.sa once the mailbox exists on the new domain.
+
+Verification: rg bengalstarltd → only email addresses + this history log remain.
+
+Stage Summary: Canonical site identity is now bengalstar.sa everywhere URLs appear (metadataBase, canonical, hreflang, OG/Twitter cards, JSON-LD, sitemap, robots, footer, form subjects). To go live: push to GitHub (commit author fixed to noreply email → Vercel Git deploys), add bengalstar.sa + www.bengalstar.sa in Vercel → Settings → Domains, then point DNS at Vercel from the .SA registrar (A @ → 76.76.21.21, CNAME www → cname.vercel-dns.com).

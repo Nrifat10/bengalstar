@@ -21,7 +21,7 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bengalstarltd.com"),
+  metadataBase: new URL("https://bengalstar.sa"),
   title: "Bengal Star Limited Company | Manpower Supply for Petrol Stations in Saudi Arabia",
   description:
     "Bengal Star Limited Company supplies trained, fully-documented workers to petrol stations across Saudi Arabia — fuel attendants, car wash staff, bakala/store workers, cashiers, tire & oil change technicians, supervisors and cleaners. 72-hour replacement guarantee.",
