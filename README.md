@@ -114,9 +114,9 @@ lead details so no enquiry is ever lost. Leads arrive directly on the company Wh
 Click **Deploy**. Vercel runs `bun install` → `postinstall` (`prisma generate`) →
 `next build`. The site is live on `https://<project>.vercel.app`.
 
-> **Custom domain:** add `bengalstar.sa` (and `www.bengalstar.sa`) in Vercel → Settings → Domains.
+> **Custom domain:** add `bengal-star.com` (and `www.bengal-star.com`) in Vercel → Settings → Domains.
 > The OpenGraph metadata in `src/app/layout.tsx` already uses
-> `metadataBase: https://bengalstar.sa`.
+> `metadataBase: https://bengal-star.com`.
 
 ---
 

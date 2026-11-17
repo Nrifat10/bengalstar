@@ -531,7 +531,7 @@
         workerType: form.workerType.value,
         message: form.message.value.trim(),
         _language: currentLang,
-        _subject: "New worker request — bengalstar.sa"
+        _subject: "New worker request — bengal-star.com"
       };
 
       /* Endpoint from the configured Formspree ID */

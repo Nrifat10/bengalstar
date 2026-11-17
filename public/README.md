@@ -68,7 +68,7 @@ vercel --prod              # production deploy
 ```
 
 Then attach your custom domain in **Project → Settings → Domains**
-(e.g. `bengalstar.sa` + `www.bengalstar.sa`).
+(e.g. `bengal-star.com` + `www.bengal-star.com`).
 
 ---
 
@@ -83,7 +83,7 @@ Real company details (from the official letterhead, 2025-11-04):
 | 3 | **Office address** | ✅ Real — `3046 Al Imam Faisal Ibn Turki Ibn Abdallah, Al Futah, Riyadh 12632` (EN + AR, JSON-LD) |
 | 4 | **CR number** | ✅ Real — `7054465963` (footer + JSON-LD `identifier`) |
 | 5 | **Company name** | ✅ Real — `Bengal Star Limited Company` / `شركة بينجال ستار اليمنيتد` (title, meta, JSON-LD, footer, translations) |
-| 6 | **Domain name** | ✅ Real — `https://bengalstar.sa` (canonical, hreflang, OG, Twitter, JSON-LD, `robots.txt`, `sitemap.xml`) |
+| 6 | **Domain name** | ✅ Real — `https://bengal-star.com` (canonical, hreflang, OG, Twitter, JSON-LD, `robots.txt`, `sitemap.xml`) |
 | 7 | **Google Maps embed** | ✅ Real — map pinned to the head-office address |
 | 8 | **Images** | ✅ Client's own station photos (hero slider + About) |
 

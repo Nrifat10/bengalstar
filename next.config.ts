@@ -29,6 +29,20 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   reactStrictMode: false,
+  async redirects() {
+    return [
+      /* www → apex 308 redirect. Canonical host is https://bengal-star.com;
+         every request that somehow reaches the app on the www host is
+         permanently redirected to the apex domain. (Vercel also handles
+         this automatically once both domains are added to the project.) */
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.bengal-star.com" }],
+        destination: "https://bengal-star.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

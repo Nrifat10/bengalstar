@@ -71,7 +71,7 @@ function buildWhatsAppLink(p: {
   lang: string;
 }): string {
   const lines = [
-    "New worker request — bengalstar.sa",
+    "New worker request — bengal-star.com",
     `Name: ${p.name}`,
     `Company: ${p.company || "—"}`,
     `Phone: ${p.phone}`,
