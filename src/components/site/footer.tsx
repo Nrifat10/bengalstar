@@ -157,8 +157,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/50 sm:flex-row sm:text-start">
+        {/* Bottom bar — generous bottom padding keeps the fixed floating
+            stack (back-to-top 44px + gap 12px + WhatsApp 52px + 20px offset
+            ≈ 128px zone at the viewport's bottom-right corner) from ever
+            covering the last footer text line on any screen size. */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pb-36 pt-6 text-center text-xs text-white/50 sm:flex-row sm:text-start">
           <p>
             {t.footer.rights} {new Date().getFullYear()} {SITE.name}
             {t.footer.rights2}

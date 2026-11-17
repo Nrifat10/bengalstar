@@ -320,3 +320,59 @@ Client acquired the new domain **bengalstar.sa**. All site-level URLs switched; 
 Verification: rg bengalstarltd → only email addresses + this history log remain.
 
 Stage Summary: Canonical site identity is now bengalstar.sa everywhere URLs appear (metadataBase, canonical, hreflang, OG/Twitter cards, JSON-LD, sitemap, robots, footer, form subjects). To go live: push to GitHub (commit author fixed to noreply email → Vercel Git deploys), add bengalstar.sa + www.bengalstar.sa in Vercel → Settings → Domains, then point DNS at Vercel from the .SA registrar (A @ → 76.76.21.21, CNAME www → cname.vercel-dns.com).
+
+---
+
+## 13-v1 — Task 13: Fix broken service images + mobile UI (2026-11-17)
+
+Two reports: service-card images not loading, and mobile UI problems.
+
+**Root cause of broken images:** 5 of the 7 z-cdn.chatglm.cn hot-linked
+service/about images had started returning 404 (CDN entries expired).
+Only about-main and service-cashier still resolved.
+
+Fix — self-host everything, zero external CDN dependencies:
+- 5 replacement photos re-sourced via z-ai image-search (2 rounds, 7 queries,
+  ~30 candidates) and individually VLM-verified for subject match +
+  watermark-freeness: fuel = uniformed attendant at pump (Texaco/Chevron,
+  Pexels), carwash = workers pressure-washing cars, store = clerk at POS
+  counter, tire = mechanic loosening wheel lug nuts, team = three hi-vis
+  workers. Rejected picks: Alamy/Shutterstock/Unsplash+ watermarked frames,
+  one shutterstock marketing-page screenshot, off-topic office photos.
+- The 2 still-working CDN images (about-main, service-cashier) downloaded
+  into public/images/ as well — no external image dependency remains.
+- service-team.png (1.4MB) optimized via sharp to 1600px JPEG @q82 (101KB);
+  service-fuel + service-carwash likewise compressed (196/200KB).
+- service-cashier.webp was actually JPEG content — renamed .jpg.
+- src/lib/i18n.ts IMAGES + public/js/images.js: all 7 entries now point to
+  /images/*.jpg; images.js header comment rewritten for the swap history.
+
+**Mobile UI fix:** VLM review of 390px screenshots found the fixed floating
+stack (back-to-top + WhatsApp FAB) covering the footer bottom-bar text at
+max scroll, on both the Next app and the static mirror. Also the Next FAB
+carried conflicting h-13/h-12 size classes.
+- footer.tsx bottom bar: pb-36 (144px) clearance on all breakpoints
+  (stack zone ≈ 128px); cleaned the malformed comment that briefly rendered
+  as literal text during editing (caught before commit).
+- whatsapp-fab.tsx: removed duplicate h-12 w-12, kept h-13 w-13 (52px touch
+  target ≥ 44px).
+- public/css/style.css .footer-bottom: padding-bottom 152px (stack 142px).
+
+Verification (agent-browser @390px):
+- Next app: all 7 service/about images ok (naturalWidth 1000-1600px),
+  zero page errors, no horizontal overflow (scrollW=clientW=390),
+  at max scroll with to-top visible: last footer text bottom 644px vs
+  stack top 716px — 72px clear, allClear=true.
+- Static mirror: all 7 images ok, no console errors, footer lines clear
+  (662/694 vs FAB 702), pb=152px applied.
+- Brand marquee "broken" imgs = false alarm: lazy-loaded tiles clipped by
+  the mask container; they load as the track animates into view.
+
+Files changed: public/images/ (7 new), src/lib/i18n.ts, public/js/images.js,
+src/components/site/footer.tsx, src/components/site/whatsapp-fab.tsx,
+public/css/style.css, worklog.md.
+
+Stage Summary: Site is now 100% self-hosted for imagery (5 dead CDN links
+replaced with VLM-verified watermark-free photos, 2 remaining hot-links
+localized), and the mobile footer no longer hides under the floating
+WhatsApp/back-to-top buttons on any screen size.

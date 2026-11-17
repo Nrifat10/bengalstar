@@ -14,21 +14,16 @@
    the About media collage. One upload was rejected: a SASCO station photo
    carried a visible Shutterstock watermark (id 2273013883).
 
-   Service-card images (Task 2-v1, 2025-10-28) are subject-exact stock
-   photos sourced via z-ai image-search and individually VLM-verified
-   to match each service (fuel attendant with nozzle-in-hand, worker in a
-   car-wash bay, store clerk inside a minimart, cashier at a POS terminal,
-   mechanic with an impact wrench on a wheel, forecourt supervisor).
-   service-fuel was re-swapped in Task 6-v1 (2025-10-28) after the original
-   Alamy preview turned out to carry a visible stock-photo watermark; the
-   replacement is a watermark-free landscape photo of a gloved hand actively
-   refueling a car with a Shell nozzle. service-carwash was also re-swapped
-   in the same task for the same reason (DepositPhotos watermarks); replaced
-   with a watermark-free Kärcher photo of a worker pressure-washing a car.
-   The other 4 service images (store, cashier, tire, team) were VLM-spot-
-   checked for watermarks and confirmed clean. The team image carries a
-   small blog-title text overlay ("Gas Station Site Inspection Checklist")
-   but has a perfect subject match and no better replacement was found.
+   Service-card images were re-sourced and self-hosted in Task 13 (2026-11-17):
+  five of the seven z-cdn.chatglm.cn hot-links had begun returning 404, so
+  all service/about images were downloaded into /images/ and re-verified
+  with VLM to be watermark-free and subject-matched:
+  fuel = smiling uniformed attendant at pump (Texaco/Chevron, Pexels),
+  carwash = workers pressure-washing cars, store = clerk at grocery POS
+  counter, cashier = original (re-hosted locally), tire = mechanic
+  loosening wheel lug nuts, team = three hi-vis workers, about-main =
+  petrol-station forecourt at sunset. No image on the site depends on an
+  external CDN anymore.
 
    If any image fails to load, js/main.js automatically swaps in
    FALLBACK_IMAGE (a branded placeholder), so the layout never breaks.
@@ -60,47 +55,37 @@ const IMAGES = [
   /* ----- About ----- */
   {
     key: "about-main",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0615e75eef73.jpg"
+    src: "/images/about-main.jpg"
   },
   {
     key: "about-team",
     src: "/images/station-forecourt.png"
   },
 
-  /* ----- Service cards (6) ----- */
-  /* service-fuel: swapped 2025-10-28 — old Alamy preview (e1e5f836f591.jpg)
-     had a visible watermark; replaced with a watermark-free Carwow photo
-     (1600x900, gloved hand holding Shell nozzle actively refueling a car),
-     VLM-verified: no watermark + person visible + good Fuel Attendants match. */
+  /* ----- Service cards (6) — self-hosted in /images/ (Task 13) ----- */
   {
     key: "service-fuel",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da06f87be78b.jpeg"
+    src: "/images/service-fuel.jpg"
   },
-  /* service-carwash: swapped 2025-10-28 (Task 6-v1) — old DepositPhotos
-     preview (4f02f12ec86e.jpg) carried visible stock-photo watermarks;
-     replaced with a watermark-free Kärcher photo (1504x627, worker in
-     blue coveralls using a high-pressure washer to rinse soap suds off
-     a silver Mercedes in a professional car wash bay), VLM-verified:
-     no watermark + worker visible + good Car Wash & Detailing match. */
   {
     key: "service-carwash",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a32d25dd6111.jpg"
+    src: "/images/service-carwash.jpg"
   },
   {
     key: "service-store",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/650986028231.jpg"
+    src: "/images/service-store.jpg"
   },
   {
     key: "service-cashier",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f8c9bd26d4db.webp"
+    src: "/images/service-cashier.jpg"
   },
   {
     key: "service-tire",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/753a24c834e4.png"
+    src: "/images/service-tire.jpg"
   },
   {
     key: "service-team",
-    src: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/21aac739a55a.png"
+    src: "/images/service-team.jpg"
   }
 ];
 

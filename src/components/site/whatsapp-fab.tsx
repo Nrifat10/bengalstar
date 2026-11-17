@@ -38,7 +38,7 @@ export function FloatingButtons() {
         aria-label={t.ui.waAria}
         className={cn(
           "pointer-events-auto group flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40",
-          "h-12 w-12 transition-transform hover:scale-105"
+          "transition-transform hover:scale-105"
         )}
       >
         <WhatsAppIcon className="h-6 w-6" />

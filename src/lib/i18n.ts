@@ -25,21 +25,14 @@ export const IMAGES = {
   hero3: "/images/station-weal.png",
   hero4: "/images/station-enoc.png",
   hero5: "/images/station-jioil.png",
-  aboutMain:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0615e75eef73.jpg",
+  aboutMain: "/images/about-main.jpg",
   aboutTeam: "/images/station-forecourt.png",
-  serviceFuel:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da06f87be78b.jpeg",
-  serviceCarwash:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a32d25dd6111.jpg",
-  serviceStore:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/650986028231.jpg",
-  serviceCashier:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f8c9bd26d4db.webp",
-  serviceTire:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/753a24c834e4.png",
-  serviceTeam:
-    "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/21aac739a55a.png",
+  serviceFuel: "/images/service-fuel.jpg",
+  serviceCarwash: "/images/service-carwash.jpg",
+  serviceStore: "/images/service-store.jpg",
+  serviceCashier: "/images/service-cashier.jpg",
+  serviceTire: "/images/service-tire.jpg",
+  serviceTeam: "/images/service-team.jpg",
 };
 
 /* Each brand carries its own accent gradient so the marquee tile can be

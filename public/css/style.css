@@ -1842,6 +1842,10 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 10px); }
   color: rgba(255, 255, 255, 0.55);
 }
 .footer-bottom p { margin: 0; }
+/* Extra bottom clearance so the fixed floating stack (to-top 54px + gap 12px
+   + WhatsApp 54px + 22px bottom offset ≈ 142px zone at the bottom-right
+   corner) never covers the last footer text line on any screen size. */
+.footer-bottom { padding-bottom: 152px; }
 
 /* ----------------------------------------------------------------------------
    18. Floating buttons
