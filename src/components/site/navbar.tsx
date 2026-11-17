@@ -100,11 +100,21 @@ function entryMatches(entry: NavEntry, route: Route): boolean {
   return entry.items.some((it) => it.route === route);
 }
 
-export function Navbar({ route }: { route: Route }) {
+export function Navbar({
+  route,
+  menuOpen: controlledOpen,
+  onMenuOpenChange,
+}: {
+  route: Route;
+  menuOpen?: boolean;
+  onMenuOpenChange?: (v: boolean) => void;
+}) {
   const { t, lang, toggleLang } = useLang();
   const nav = t.nav as unknown as NavDict;
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const menuOpen = controlledOpen ?? internalOpen;
+  const setMenuOpen = onMenuOpenChange ?? setInternalOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -433,7 +443,7 @@ function MobileMenu({
         />
       </nav>
 
-      <div className="mt-auto border-t border-border p-4">
+      <div className="mt-auto border-t border-border p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <Button
           asChild
           className="btn-shine h-11 w-full rounded-full bg-gradient-to-r from-gold-3 via-gold to-gold-2 text-sm font-semibold text-brand"

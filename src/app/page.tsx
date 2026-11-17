@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LangProvider, useLang } from "@/components/site/lang-provider";
 import { useHashRoute, type Route } from "@/components/site/router";
@@ -52,6 +52,7 @@ const PAGE_TITLES: Record<Route, { en: string; ar: string }> = {
 function SiteShell() {
   const { route } = useHashRoute();
   const { lang } = useLang();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   /* Scroll to top whenever the "page" changes */
   useEffect(() => {
@@ -69,7 +70,11 @@ function SiteShell() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Navbar route={route} />
+      <Navbar
+        route={route}
+        menuOpen={menuOpen}
+        onMenuOpenChange={setMenuOpen}
+      />
       <main id="main" className="flex-1">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -84,7 +89,7 @@ function SiteShell() {
         </AnimatePresence>
       </main>
       <Footer />
-      <FloatingButtons />
+      <FloatingButtons hidden={menuOpen} />
     </div>
   );
 }
